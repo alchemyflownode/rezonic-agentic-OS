@@ -1,0 +1,49 @@
+﻿# ==========================================
+# EXCLUDE ALL MEMORY/DATA FILES - KEEP LOCAL
+# ==========================================
+apps/phoenix-kernel/data/
+apps/phoenix-kernel/memory/
+apps/phoenix-kernel/blueprints/
+apps/phoenix-kernel/*.db
+apps/phoenix-kernel/*.sqlite
+apps/phoenix-kernel/*.key
+apps/phoenix-kernel/*.json
+!apps/phoenix-kernel/constitution.json
+
+# Archives and backups
+archive/
+backups/
+phoenix-coworker/
+rezhiveos-demo/
+*.zip
+*.rar
+*.tar
+
+# Dependencies
+node_modules/
+.next/
+venv/
+__pycache__/
+
+# Build outputs
+dist/
+build/
+logs/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+chroma.log
+bfg.jar
