@@ -1,0 +1,9 @@
+﻿# Auto-detect text files
+* text=auto
+
+# Force TypeScript files to be detected as TypeScript
+*.tsx linguist-language=TypeScript
+*.ts linguist-language=TypeScript
+
+# Force Python files
+*.py linguist-language=Python
