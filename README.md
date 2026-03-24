@@ -1,5 +1,3 @@
-# Update README with proper Phoenix OS information
-@"
 # 🏛️ Phoenix OS - Sovereign AI Trading Terminal
 
 [![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
