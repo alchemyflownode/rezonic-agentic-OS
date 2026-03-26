@@ -1,4 +1,4 @@
-﻿# core.py - FIXED
+# core.py - FIXED
 from typing import Dict, Any, Optional
 import asyncio
 import logging

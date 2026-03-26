@@ -1,0 +1,62 @@
+# Phoenix Coworker Configuration
+
+# Data directory (where memory, logs, etc. are stored)
+data_dir: ~/.phoenix
+
+# Desktop integration
+hotkey: ctrl+shift+space
+enable_desktop: true
+enable_file_watching: true
+
+# Safety profile: strict, balanced, trusting
+safety_profile: balanced
+
+# LLM Configuration
+default_llm: ollama  # ollama, openai
+ollama_model: llama3.2
+ollama_url: http://localhost:11434
+
+# OpenAI (optional - requires OPENAI_API_KEY env var)
+# openai_model: gpt-4
+
+# Proactive tasks to run on schedule
+proactive_tasks:
+  - morning_briefing
+
+# File watching configuration
+watchers:
+  - path: ~/Downloads
+    patterns: ["*.pdf", "*.zip", "*.jpg", "*.png", "*.mp4"]
+    action: ask
+  
+  - path: ~/Documents/Notes
+    patterns: ["*.md", "*.txt"]
+    action: auto_organize
+
+# Worker configuration
+workers:
+  brain:
+    enabled: true
+  filesystem:
+    enabled: true
+  execution:
+    enabled: true
+    timeout: 30
+  vision:
+    enabled: false  # Enable if you want screen capture
+  voice:
+    enabled: false  # Enable if you want TTS/STT
+
+# Memory configuration
+memory:
+  vector_storage: true  # Requires chromadb
+  graph_storage: true   # Requires networkx
+  embeddings: true      # Requires sentence-transformers
+  max_history: 1000
+
+# Logging
+logging:
+  level: INFO
+  file: ~/.phoenix/phoenix.log
+  max_size: 10MB
+  backup_count: 5

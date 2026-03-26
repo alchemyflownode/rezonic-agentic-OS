@@ -1,0 +1,14 @@
+# prometheus.yml
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'phoenix-kernel'
+    static_configs:
+      - targets: ['kernel:8002']
+    metrics_path: '/metrics'
+    
+  - job_name: 'phoenix-ollama'
+    static_configs:
+      - targets: ['ollama:11434']

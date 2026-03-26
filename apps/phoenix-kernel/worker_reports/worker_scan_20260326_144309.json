@@ -1,0 +1,2276 @@
+{
+  "total_files": 78,
+  "valid_workers": 35,
+  "invalid_workers": 42,
+  "security_issues": [
+    {
+      "file": "agamoto_bridge_worker.py",
+      "issues": [
+        "Class AgamotoBridgeWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "aggregator_worker.py",
+      "issues": [
+        "Class AggregatorWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "ai_trader_worker.py",
+      "issues": [
+        "Class AiTraderWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "analyst_worker.py",
+      "issues": [
+        "Class AnalystWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "apex_worker.py",
+      "issues": [
+        "Class ApexWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "app_builder_worker.py",
+      "issues": [
+        "Class AppBuilderWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "audio_worker.py",
+      "issues": [
+        "Class AudioWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "backtest_engine.py",
+      "issues": [
+        "Class BacktestEngine missing execute() method"
+      ]
+    },
+    {
+      "file": "backtest_worker.py",
+      "issues": [
+        "Class BacktestWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "backup_base_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class BaseWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "backup_worker.py",
+      "issues": [
+        "Class BackupWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "base_worker.py",
+      "issues": [
+        "Class Worker missing execute() method"
+      ]
+    },
+    {
+      "file": "brain_worker.py",
+      "issues": [
+        "Class BrainWorker missing execute() method",
+        "Class WorkerConfig missing execute() method",
+        "Class Worker missing execute() method"
+      ]
+    },
+    {
+      "file": "browser_worker.py",
+      "issues": [
+        "Dangerous pattern: Subprocess execution",
+        "Suspicious import: subprocess",
+        "Class BrowserWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "canvas_worker.py",
+      "issues": [
+        "Class CanvasWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "chronos_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class ChronosWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "circuit_breaker_worker.py",
+      "issues": [
+        "Class CircuitBreakerWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "clipboard_worker.py",
+      "issues": [
+        "Suspicious import: subprocess",
+        "Class ClipboardWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "comfyui_worker.py",
+      "issues": [
+        "Class ComfyUIWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "constitutional_council_fixed.py",
+      "issues": [
+        "Class ConstitutionalCouncilWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "constitutional_evaluator.py",
+      "issues": [
+        "Class ConstitutionalEvaluator missing execute() method"
+      ]
+    },
+    {
+      "file": "constitutional_governor.py",
+      "issues": [
+        "Class ConstitutionalGovernorWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "constitutional_router.py",
+      "issues": [
+        "Class ConstitutionalRouterWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "constitutional_worker.py",
+      "issues": [
+        "Class ConstitutionalWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "context_bus.py",
+      "issues": [
+        "Class ContextBus missing execute() method"
+      ]
+    },
+    {
+      "file": "core.py",
+      "issues": [
+        "Class CoreSystemWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "cortex_worker.py",
+      "issues": [
+        "Class CortexWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "coworker_registry.py",
+      "issues": [
+        "Class CoworkerRegistry missing execute() method"
+      ]
+    },
+    {
+      "file": "critic_worker.py",
+      "issues": [
+        "Class CriticWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "crypto_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class CryptoWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "dream_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class DreamWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "entropy_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class EntropyWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "evolution_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class EvolutionWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "exchange_worker.py",
+      "issues": [
+        "Class ExchangeWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "execution_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class ExecutionWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "eyes_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class EyesWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "file_doctor_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class FileDoctorWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "file_manager_worker.py",
+      "issues": [
+        "Class FileManagerWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "filesystem_context.py",
+      "issues": [
+        "Class FilesystemContext missing execute() method"
+      ]
+    },
+    {
+      "file": "forex_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class ForexWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "guardian_worker.py",
+      "issues": [
+        "Class GuardianWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "hands_worker.py",
+      "issues": [
+        "Class HandsWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "harvester_worker.py",
+      "issues": [
+        "Class HarvesterWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "hybrid_orchestrator.py",
+      "issues": [
+        "Class HybridOrchestratorWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "identity_worker.py",
+      "issues": [
+        "Class IdentityWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "jurisdiction_scanner.py",
+      "issues": [
+        "Class JurisdictionScanner missing execute() method"
+      ]
+    },
+    {
+      "file": "llm_worker.py",
+      "issues": [
+        "Class LlmWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "mastery_worker.py",
+      "issues": [
+        "Class MasteryWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "memory_worker.py",
+      "issues": [
+        "Class MemoryWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "mock_trader.py",
+      "issues": [
+        "Class MockTraderWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "ollama_constitutional_enhanced.py",
+      "issues": [
+        "Class OllamaConstitutionalWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "paper_trader_worker.py",
+      "issues": [
+        "Class PaperTraderWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "pc_hive_memory.py",
+      "issues": [
+        "Class PcHiveMemory missing execute() method"
+      ]
+    },
+    {
+      "file": "ps1_router.py",
+      "issues": [
+        "Class Ps1Router missing execute() method"
+      ]
+    },
+    {
+      "file": "register_workers.py",
+      "issues": [
+        "Class RegisterWorkers missing execute() method"
+      ]
+    },
+    {
+      "file": "registry.py",
+      "issues": [
+        "Class WorkerRegistry missing execute() method"
+      ]
+    },
+    {
+      "file": "registry_orchestrator.py",
+      "issues": [
+        "Class RegistryOrchestrator missing execute() method"
+      ]
+    },
+    {
+      "file": "rez_scanner.py",
+      "issues": [
+        "Class RezScanner missing execute() method"
+      ]
+    },
+    {
+      "file": "rez_swarm_worker.py",
+      "issues": [
+        "Class RezSwarmWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "rezstack_worker.py",
+      "issues": [
+        "Class RezstackWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "risk_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class RiskWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "sandbox_worker.py",
+      "issues": [
+        "Class SandboxWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "sce_compiler.py",
+      "issues": [
+        "Class SCECompiler missing execute() method",
+        "Class WorkerConfig missing execute() method",
+        "Class Worker missing execute() method"
+      ]
+    },
+    {
+      "file": "sce_image_worker.py",
+      "issues": [
+        "Class SCEImageWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "simple_test_worker.py",
+      "issues": [
+        "Class SimpleTestWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "sovereign_mcp_server.py",
+      "issues": [
+        "Class SovereignMcpServer missing execute() method"
+      ]
+    },
+    {
+      "file": "strategy_evolver.py",
+      "issues": [
+        "Class StrategyEvolver missing execute() method"
+      ]
+    },
+    {
+      "file": "system_worker.py",
+      "issues": [
+        "Class SystemWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "techdebt_scanner.py",
+      "issues": [
+        "Class TechdebtScanner missing execute() method"
+      ]
+    },
+    {
+      "file": "test_worker.py",
+      "issues": [
+        "Class TestWorker missing execute() method",
+        "Class WorkerConfig missing execute() method",
+        "Class Worker missing execute() method"
+      ]
+    },
+    {
+      "file": "trade_visualizer.py",
+      "issues": [
+        "Suspicious import: websockets.serve",
+        "Suspicious import: websockets.connect",
+        "Class WorkerActivity missing execute() method",
+        "Class TradeVisualizerWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "tradingview_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class TradingViewWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "validator_worker.py",
+      "issues": [
+        "Class ValidatorWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "vision_worker.py",
+      "issues": [
+        "Class VisionWorker missing execute() method"
+      ]
+    },
+    {
+      "file": "voice_worker.py",
+      "issues": [
+        "Dangerous pattern: Dynamic import",
+        "Class VoiceWorker missing execute() method"
+      ]
+    }
+  ],
+  "syntax_errors": [],
+  "import_errors": [],
+  "workers_found": [
+    "BaseWorker",
+    "BackupWorker",
+    "Worker",
+    "BrainWorker",
+    "WorkerConfig",
+    "Worker",
+    "BrowserWorker",
+    "ChronosWorker",
+    "CircuitBreakerWorker",
+    "ClipboardWorker",
+    "ComfyUIWorker",
+    "ConstitutionalCouncilWorker",
+    "ConstitutionalGovernorWorker",
+    "ConstitutionalRouterWorker",
+    "CoreSystemWorker",
+    "CryptoWorker",
+    "DreamWorker",
+    "EntropyWorker",
+    "EvolutionWorker",
+    "ExecutionWorker",
+    "EyesWorker",
+    "FileDoctorWorker",
+    "FileManagerWorker",
+    "ForexWorker",
+    "GuardianWorker",
+    "HybridOrchestratorWorker",
+    "MasteryWorker",
+    "MockTraderWorker",
+    "OllamaConstitutionalWorker",
+    "WorkerRegistry",
+    "RiskWorker",
+    "SCECompiler",
+    "WorkerConfig",
+    "Worker",
+    "SCEImageWorker",
+    "TestWorker",
+    "WorkerConfig",
+    "Worker",
+    "WorkerActivity",
+    "TradeVisualizerWorker",
+    "TradingViewWorker",
+    "VoiceWorker"
+  ],
+  "worker_classes": [
+    {
+      "file": "backup_base_worker.py",
+      "class": "BaseWorker",
+      "has_execute": false
+    },
+    {
+      "file": "backup_worker.py",
+      "class": "BackupWorker",
+      "has_execute": false
+    },
+    {
+      "file": "base_worker.py",
+      "class": "Worker",
+      "has_execute": false
+    },
+    {
+      "file": "brain_worker.py",
+      "class": "BrainWorker",
+      "has_execute": false
+    },
+    {
+      "file": "brain_worker.py",
+      "class": "WorkerConfig",
+      "has_execute": false
+    },
+    {
+      "file": "brain_worker.py",
+      "class": "Worker",
+      "has_execute": false
+    },
+    {
+      "file": "browser_worker.py",
+      "class": "BrowserWorker",
+      "has_execute": false
+    },
+    {
+      "file": "chronos_worker.py",
+      "class": "ChronosWorker",
+      "has_execute": false
+    },
+    {
+      "file": "circuit_breaker_worker.py",
+      "class": "CircuitBreakerWorker",
+      "has_execute": false
+    },
+    {
+      "file": "clipboard_worker.py",
+      "class": "ClipboardWorker",
+      "has_execute": false
+    },
+    {
+      "file": "comfyui_worker.py",
+      "class": "ComfyUIWorker",
+      "has_execute": false
+    },
+    {
+      "file": "constitutional_council_fixed.py",
+      "class": "ConstitutionalCouncilWorker",
+      "has_execute": false
+    },
+    {
+      "file": "constitutional_governor.py",
+      "class": "ConstitutionalGovernorWorker",
+      "has_execute": false
+    },
+    {
+      "file": "constitutional_router.py",
+      "class": "ConstitutionalRouterWorker",
+      "has_execute": false
+    },
+    {
+      "file": "core.py",
+      "class": "CoreSystemWorker",
+      "has_execute": false
+    },
+    {
+      "file": "crypto_worker.py",
+      "class": "CryptoWorker",
+      "has_execute": false
+    },
+    {
+      "file": "dream_worker.py",
+      "class": "DreamWorker",
+      "has_execute": false
+    },
+    {
+      "file": "entropy_worker.py",
+      "class": "EntropyWorker",
+      "has_execute": false
+    },
+    {
+      "file": "evolution_worker.py",
+      "class": "EvolutionWorker",
+      "has_execute": false
+    },
+    {
+      "file": "execution_worker.py",
+      "class": "ExecutionWorker",
+      "has_execute": false
+    },
+    {
+      "file": "eyes_worker.py",
+      "class": "EyesWorker",
+      "has_execute": false
+    },
+    {
+      "file": "file_doctor_worker.py",
+      "class": "FileDoctorWorker",
+      "has_execute": false
+    },
+    {
+      "file": "file_manager_worker.py",
+      "class": "FileManagerWorker",
+      "has_execute": false
+    },
+    {
+      "file": "forex_worker.py",
+      "class": "ForexWorker",
+      "has_execute": false
+    },
+    {
+      "file": "guardian_worker.py",
+      "class": "GuardianWorker",
+      "has_execute": false
+    },
+    {
+      "file": "hybrid_orchestrator.py",
+      "class": "HybridOrchestratorWorker",
+      "has_execute": false
+    },
+    {
+      "file": "mastery_worker.py",
+      "class": "MasteryWorker",
+      "has_execute": false
+    },
+    {
+      "file": "mock_trader.py",
+      "class": "MockTraderWorker",
+      "has_execute": false
+    },
+    {
+      "file": "ollama_constitutional_enhanced.py",
+      "class": "OllamaConstitutionalWorker",
+      "has_execute": false
+    },
+    {
+      "file": "registry.py",
+      "class": "WorkerRegistry",
+      "has_execute": false
+    },
+    {
+      "file": "risk_worker.py",
+      "class": "RiskWorker",
+      "has_execute": false
+    },
+    {
+      "file": "sce_compiler.py",
+      "class": "SCECompiler",
+      "has_execute": false
+    },
+    {
+      "file": "sce_compiler.py",
+      "class": "WorkerConfig",
+      "has_execute": false
+    },
+    {
+      "file": "sce_compiler.py",
+      "class": "Worker",
+      "has_execute": false
+    },
+    {
+      "file": "sce_image_worker.py",
+      "class": "SCEImageWorker",
+      "has_execute": false
+    },
+    {
+      "file": "test_worker.py",
+      "class": "TestWorker",
+      "has_execute": false
+    },
+    {
+      "file": "test_worker.py",
+      "class": "WorkerConfig",
+      "has_execute": false
+    },
+    {
+      "file": "test_worker.py",
+      "class": "Worker",
+      "has_execute": false
+    },
+    {
+      "file": "trade_visualizer.py",
+      "class": "WorkerActivity",
+      "has_execute": false
+    },
+    {
+      "file": "trade_visualizer.py",
+      "class": "TradeVisualizerWorker",
+      "has_execute": false
+    },
+    {
+      "file": "tradingview_worker.py",
+      "class": "TradingViewWorker",
+      "has_execute": false
+    },
+    {
+      "file": "voice_worker.py",
+      "class": "VoiceWorker",
+      "has_execute": false
+    }
+  ],
+  "security_score": -880,
+  "agamoto_bridge_worker.py": {
+    "filename": "agamoto_bridge_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class AgamotoBridgeWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "AgamotoBridgeWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 373,
+    "modified": "2026-03-25T12:20:17.222773"
+  },
+  "aggregator_worker.py": {
+    "filename": "aggregator_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class AggregatorWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "AggregatorWorker",
+        "has_execute": false,
+        "line": 13
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 507,
+    "modified": "2026-03-26T14:07:30.827217"
+  },
+  "ai_trader_worker.py": {
+    "filename": "ai_trader_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class AiTraderWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "AiTraderWorker",
+        "has_execute": false,
+        "line": 9
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 2285,
+    "modified": "2026-03-26T14:07:30.746910"
+  },
+  "analyst_worker.py": {
+    "filename": "analyst_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class AnalystWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "AnalystWorker",
+        "has_execute": false,
+        "line": 13
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 504,
+    "modified": "2026-03-26T14:07:30.830224"
+  },
+  "apex_worker.py": {
+    "filename": "apex_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class ApexWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ApexWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 334,
+    "modified": "2026-03-25T12:20:17.224772"
+  },
+  "app_builder_worker.py": {
+    "filename": "app_builder_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class AppBuilderWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "AppBuilderWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 361,
+    "modified": "2026-03-25T12:20:17.226788"
+  },
+  "audio_worker.py": {
+    "filename": "audio_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class AudioWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "AudioWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 338,
+    "modified": "2026-03-25T12:20:17.228775"
+  },
+  "backtest_engine.py": {
+    "filename": "backtest_engine.py",
+    "valid": true,
+    "security_issues": [
+      "Class BacktestEngine missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "BacktestEngine",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 350,
+    "modified": "2026-03-25T12:20:17.229773"
+  },
+  "backtest_worker.py": {
+    "filename": "backtest_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class BacktestWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "BacktestWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 271,
+    "modified": "2026-03-25T12:18:06.101866"
+  },
+  "backup_base_worker.py": {
+    "filename": "backup_base_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class BaseWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "BaseWorker",
+        "has_execute": false,
+        "line": 7
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 1479,
+    "modified": "2026-03-16T01:03:19.878497"
+  },
+  "backup_worker.py": {
+    "filename": "backup_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class BackupWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "BackupWorker",
+        "has_execute": false,
+        "line": 18
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 7753,
+    "modified": "2026-03-24T08:17:56.053044"
+  },
+  "base_worker.py": {
+    "filename": "base_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class Worker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "Worker",
+        "has_execute": false,
+        "line": 4
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 405,
+    "modified": "2026-03-25T12:18:05.934509"
+  },
+  "brain_worker.py": {
+    "filename": "brain_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class BrainWorker missing execute() method",
+      "Class WorkerConfig missing execute() method",
+      "Class Worker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "BrainWorker",
+        "has_execute": false,
+        "line": 23
+      },
+      {
+        "name": "WorkerConfig",
+        "has_execute": false,
+        "line": 16
+      },
+      {
+        "name": "Worker",
+        "has_execute": false,
+        "line": 18
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 1578,
+    "modified": "2026-03-26T14:07:30.750891"
+  },
+  "browser_worker.py": {
+    "filename": "browser_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Subprocess execution",
+      "Suspicious import: subprocess",
+      "Class BrowserWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "BrowserWorker",
+        "has_execute": false,
+        "line": 7
+      }
+    ],
+    "dangerous_patterns": [
+      "Subprocess execution"
+    ],
+    "size": 2423,
+    "modified": "2026-03-23T14:19:54.068408"
+  },
+  "canvas_worker.py": {
+    "filename": "canvas_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class CanvasWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "CanvasWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 342,
+    "modified": "2026-03-25T12:20:17.230774"
+  },
+  "chronos_worker.py": {
+    "filename": "chronos_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class ChronosWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ChronosWorker",
+        "has_execute": false,
+        "line": 14
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 1065,
+    "modified": "2026-03-26T14:07:30.754884"
+  },
+  "circuit_breaker_worker.py": {
+    "filename": "circuit_breaker_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class CircuitBreakerWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "CircuitBreakerWorker",
+        "has_execute": false,
+        "line": 2
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 1430,
+    "modified": "2026-03-16T22:05:15.328133"
+  },
+  "clipboard_worker.py": {
+    "filename": "clipboard_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Suspicious import: subprocess",
+      "Class ClipboardWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ClipboardWorker",
+        "has_execute": false,
+        "line": 7
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 3390,
+    "modified": "2026-03-23T14:19:43.983861"
+  },
+  "comfyui_worker.py": {
+    "filename": "comfyui_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class ComfyUIWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ComfyUIWorker",
+        "has_execute": false,
+        "line": 11
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 8904,
+    "modified": "2026-03-25T16:23:26.095542"
+  },
+  "constitutional_council_fixed.py": {
+    "filename": "constitutional_council_fixed.py",
+    "valid": true,
+    "security_issues": [
+      "Class ConstitutionalCouncilWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ConstitutionalCouncilWorker",
+        "has_execute": false,
+        "line": 8
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 1368,
+    "modified": "2026-03-26T14:07:30.757909"
+  },
+  "constitutional_evaluator.py": {
+    "filename": "constitutional_evaluator.py",
+    "valid": true,
+    "security_issues": [
+      "Class ConstitutionalEvaluator missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ConstitutionalEvaluator",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 386,
+    "modified": "2026-03-25T12:20:17.232773"
+  },
+  "constitutional_governor.py": {
+    "filename": "constitutional_governor.py",
+    "valid": true,
+    "security_issues": [
+      "Class ConstitutionalGovernorWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ConstitutionalGovernorWorker",
+        "has_execute": false,
+        "line": 8
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 1764,
+    "modified": "2026-03-26T14:07:30.760885"
+  },
+  "constitutional_router.py": {
+    "filename": "constitutional_router.py",
+    "valid": true,
+    "security_issues": [
+      "Class ConstitutionalRouterWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ConstitutionalRouterWorker",
+        "has_execute": false,
+        "line": 8
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 1810,
+    "modified": "2026-03-26T14:07:30.762922"
+  },
+  "constitutional_worker.py": {
+    "filename": "constitutional_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class ConstitutionalWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ConstitutionalWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 374,
+    "modified": "2026-03-25T12:20:17.233772"
+  },
+  "context_bus.py": {
+    "filename": "context_bus.py",
+    "valid": true,
+    "security_issues": [
+      "Class ContextBus missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ContextBus",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 334,
+    "modified": "2026-03-25T12:20:17.234772"
+  },
+  "core.py": {
+    "filename": "core.py",
+    "valid": true,
+    "security_issues": [
+      "Class CoreSystemWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "CoreSystemWorker",
+        "has_execute": false,
+        "line": 8
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 1416,
+    "modified": "2026-03-26T14:07:30.765885"
+  },
+  "cortex_worker.py": {
+    "filename": "cortex_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class CortexWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "CortexWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 342,
+    "modified": "2026-03-25T12:20:17.236773"
+  },
+  "coworker_registry.py": {
+    "filename": "coworker_registry.py",
+    "valid": true,
+    "security_issues": [
+      "Class CoworkerRegistry missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "CoworkerRegistry",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 358,
+    "modified": "2026-03-25T12:20:17.237773"
+  },
+  "critic_worker.py": {
+    "filename": "critic_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class CriticWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "CriticWorker",
+        "has_execute": false,
+        "line": 13
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 503,
+    "modified": "2026-03-26T14:07:30.833311"
+  },
+  "crypto_worker.py": {
+    "filename": "crypto_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class CryptoWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "CryptoWorker",
+        "has_execute": false,
+        "line": 17
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 3978,
+    "modified": "2026-03-26T14:07:30.769377"
+  },
+  "decorators.py": {
+    "filename": "decorators.py",
+    "valid": false,
+    "security_issues": [],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [],
+    "dangerous_patterns": [],
+    "size": 4283,
+    "modified": "2026-03-24T08:18:40.223450"
+  },
+  "dream_worker.py": {
+    "filename": "dream_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class DreamWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "DreamWorker",
+        "has_execute": false,
+        "line": 14
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 1067,
+    "modified": "2026-03-26T14:07:30.772413"
+  },
+  "entropy_worker.py": {
+    "filename": "entropy_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class EntropyWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "EntropyWorker",
+        "has_execute": false,
+        "line": 15
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 3174,
+    "modified": "2026-03-26T14:07:30.774443"
+  },
+  "evolution_worker.py": {
+    "filename": "evolution_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class EvolutionWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "EvolutionWorker",
+        "has_execute": false,
+        "line": 19
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 3297,
+    "modified": "2026-03-26T14:07:30.777420"
+  },
+  "exchange_worker.py": {
+    "filename": "exchange_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class ExchangeWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ExchangeWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 350,
+    "modified": "2026-03-25T12:20:17.241785"
+  },
+  "execution_worker.py": {
+    "filename": "execution_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class ExecutionWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ExecutionWorker",
+        "has_execute": false,
+        "line": 19
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 4653,
+    "modified": "2026-03-26T14:07:30.779414"
+  },
+  "eyes_worker.py": {
+    "filename": "eyes_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class EyesWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "EyesWorker",
+        "has_execute": false,
+        "line": 14
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 1058,
+    "modified": "2026-03-26T14:07:30.782942"
+  },
+  "file_doctor_worker.py": {
+    "filename": "file_doctor_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class FileDoctorWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "FileDoctorWorker",
+        "has_execute": false,
+        "line": 28
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 3351,
+    "modified": "2026-03-26T14:07:30.785951"
+  },
+  "file_manager_worker.py": {
+    "filename": "file_manager_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class FileManagerWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "FileManagerWorker",
+        "has_execute": false,
+        "line": 9
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 6126,
+    "modified": "2026-03-23T14:14:43.101257"
+  },
+  "filesystem_context.py": {
+    "filename": "filesystem_context.py",
+    "valid": true,
+    "security_issues": [
+      "Class FilesystemContext missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "FilesystemContext",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 362,
+    "modified": "2026-03-25T12:20:17.243798"
+  },
+  "forex_worker.py": {
+    "filename": "forex_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class ForexWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ForexWorker",
+        "has_execute": false,
+        "line": 16
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 2074,
+    "modified": "2026-03-26T14:07:30.788950"
+  },
+  "guardian_worker.py": {
+    "filename": "guardian_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class GuardianWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "GuardianWorker",
+        "has_execute": false,
+        "line": 15
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 3668,
+    "modified": "2026-03-26T14:07:30.791950"
+  },
+  "hands_worker.py": {
+    "filename": "hands_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class HandsWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "HandsWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 338,
+    "modified": "2026-03-25T12:20:17.245799"
+  },
+  "harvester_worker.py": {
+    "filename": "harvester_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class HarvesterWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "HarvesterWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 354,
+    "modified": "2026-03-25T12:20:17.246773"
+  },
+  "hybrid_orchestrator.py": {
+    "filename": "hybrid_orchestrator.py",
+    "valid": true,
+    "security_issues": [
+      "Class HybridOrchestratorWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "HybridOrchestratorWorker",
+        "has_execute": false,
+        "line": 8
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 1639,
+    "modified": "2026-03-26T14:07:30.794950"
+  },
+  "identity_worker.py": {
+    "filename": "identity_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class IdentityWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "IdentityWorker",
+        "has_execute": false,
+        "line": 13
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 505,
+    "modified": "2026-03-26T14:07:30.835917"
+  },
+  "jurisdiction_scanner.py": {
+    "filename": "jurisdiction_scanner.py",
+    "valid": true,
+    "security_issues": [
+      "Class JurisdictionScanner missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "JurisdictionScanner",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 370,
+    "modified": "2026-03-25T12:20:17.248773"
+  },
+  "llm_worker.py": {
+    "filename": "llm_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class LlmWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "LlmWorker",
+        "has_execute": false,
+        "line": 13
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 500,
+    "modified": "2026-03-26T14:07:30.838926"
+  },
+  "mastery_worker.py": {
+    "filename": "mastery_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class MasteryWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "MasteryWorker",
+        "has_execute": false,
+        "line": 23
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 8098,
+    "modified": "2026-03-26T14:07:30.797951"
+  },
+  "memory_worker.py": {
+    "filename": "memory_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class MemoryWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "MemoryWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 265,
+    "modified": "2026-03-25T12:18:06.113865"
+  },
+  "mock_trader.py": {
+    "filename": "mock_trader.py",
+    "valid": true,
+    "security_issues": [
+      "Class MockTraderWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "MockTraderWorker",
+        "has_execute": false,
+        "line": 9
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 2591,
+    "modified": "2026-03-26T14:07:30.801219"
+  },
+  "ollama_constitutional_enhanced.py": {
+    "filename": "ollama_constitutional_enhanced.py",
+    "valid": true,
+    "security_issues": [
+      "Class OllamaConstitutionalWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "OllamaConstitutionalWorker",
+        "has_execute": false,
+        "line": 10
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 4165,
+    "modified": "2026-03-26T14:07:30.803217"
+  },
+  "paper_trader_worker.py": {
+    "filename": "paper_trader_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class PaperTraderWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "PaperTraderWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 282,
+    "modified": "2026-03-25T12:18:06.151902"
+  },
+  "pc_hive_memory.py": {
+    "filename": "pc_hive_memory.py",
+    "valid": true,
+    "security_issues": [
+      "Class PcHiveMemory missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "PcHiveMemory",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 345,
+    "modified": "2026-03-25T12:20:17.249776"
+  },
+  "ps1_router.py": {
+    "filename": "ps1_router.py",
+    "valid": true,
+    "security_issues": [
+      "Class Ps1Router missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "Ps1Router",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 330,
+    "modified": "2026-03-25T12:20:17.250774"
+  },
+  "register_workers.py": {
+    "filename": "register_workers.py",
+    "valid": true,
+    "security_issues": [
+      "Class RegisterWorkers missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "RegisterWorkers",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 354,
+    "modified": "2026-03-25T12:20:17.252773"
+  },
+  "registry.py": {
+    "filename": "registry.py",
+    "valid": true,
+    "security_issues": [
+      "Class WorkerRegistry missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "WorkerRegistry",
+        "has_execute": false,
+        "line": 11
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 610,
+    "modified": "2026-03-26T14:07:30.806218"
+  },
+  "registry_orchestrator.py": {
+    "filename": "registry_orchestrator.py",
+    "valid": true,
+    "security_issues": [
+      "Class RegistryOrchestrator missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "RegistryOrchestrator",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 374,
+    "modified": "2026-03-25T12:20:17.253773"
+  },
+  "rez_scanner.py": {
+    "filename": "rez_scanner.py",
+    "valid": true,
+    "security_issues": [
+      "Class RezScanner missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "RezScanner",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 334,
+    "modified": "2026-03-25T12:20:17.256773"
+  },
+  "rez_swarm_worker.py": {
+    "filename": "rez_swarm_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class RezSwarmWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "RezSwarmWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 273,
+    "modified": "2026-03-25T12:18:06.120865"
+  },
+  "rezstack_worker.py": {
+    "filename": "rezstack_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class RezstackWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "RezstackWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 350,
+    "modified": "2026-03-25T12:20:17.261774"
+  },
+  "risk_worker.py": {
+    "filename": "risk_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class RiskWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "RiskWorker",
+        "has_execute": false,
+        "line": 12
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 1016,
+    "modified": "2026-03-26T14:07:30.809218"
+  },
+  "sandbox_worker.py": {
+    "filename": "sandbox_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class SandboxWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "SandboxWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 346,
+    "modified": "2026-03-25T12:20:17.262774"
+  },
+  "sce_compiler.py": {
+    "filename": "sce_compiler.py",
+    "valid": true,
+    "security_issues": [
+      "Class SCECompiler missing execute() method",
+      "Class WorkerConfig missing execute() method",
+      "Class Worker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "SCECompiler",
+        "has_execute": false,
+        "line": 27
+      },
+      {
+        "name": "WorkerConfig",
+        "has_execute": false,
+        "line": 20
+      },
+      {
+        "name": "Worker",
+        "has_execute": false,
+        "line": 22
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 2600,
+    "modified": "2026-03-26T14:07:30.812218"
+  },
+  "sce_image_parser.py": {
+    "filename": "sce_image_parser.py",
+    "valid": false,
+    "security_issues": [],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [],
+    "dangerous_patterns": [],
+    "size": 9236,
+    "modified": "2026-03-26T14:07:30.815218"
+  },
+  "sce_image_worker.py": {
+    "filename": "sce_image_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class SCEImageWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "SCEImageWorker",
+        "has_execute": false,
+        "line": 10
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 3567,
+    "modified": "2026-03-25T13:40:23.433842"
+  },
+  "simple_test_worker.py": {
+    "filename": "simple_test_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class SimpleTestWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "SimpleTestWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 361,
+    "modified": "2026-03-25T12:20:17.264775"
+  },
+  "sovereign_mcp_server.py": {
+    "filename": "sovereign_mcp_server.py",
+    "valid": true,
+    "security_issues": [
+      "Class SovereignMcpServer missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "SovereignMcpServer",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 369,
+    "modified": "2026-03-25T12:20:17.266774"
+  },
+  "strategy_evolver.py": {
+    "filename": "strategy_evolver.py",
+    "valid": true,
+    "security_issues": [
+      "Class StrategyEvolver missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "StrategyEvolver",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 274,
+    "modified": "2026-03-25T12:18:06.133866"
+  },
+  "system_worker.py": {
+    "filename": "system_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class SystemWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "SystemWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 342,
+    "modified": "2026-03-25T12:20:17.267773"
+  },
+  "techdebt_scanner.py": {
+    "filename": "techdebt_scanner.py",
+    "valid": true,
+    "security_issues": [
+      "Class TechdebtScanner missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "TechdebtScanner",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 354,
+    "modified": "2026-03-25T12:20:17.268773"
+  },
+  "test_worker.py": {
+    "filename": "test_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class TestWorker missing execute() method",
+      "Class WorkerConfig missing execute() method",
+      "Class Worker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "TestWorker",
+        "has_execute": false,
+        "line": 23
+      },
+      {
+        "name": "WorkerConfig",
+        "has_execute": false,
+        "line": 16
+      },
+      {
+        "name": "Worker",
+        "has_execute": false,
+        "line": 18
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 1406,
+    "modified": "2026-03-26T14:07:30.818217"
+  },
+  "trade_visualizer.py": {
+    "filename": "trade_visualizer.py",
+    "valid": true,
+    "security_issues": [
+      "Suspicious import: websockets.serve",
+      "Suspicious import: websockets.connect",
+      "Class WorkerActivity missing execute() method",
+      "Class TradeVisualizerWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "WorkerActivity",
+        "has_execute": false,
+        "line": 47
+      },
+      {
+        "name": "TradeVisualizerWorker",
+        "has_execute": false,
+        "line": 57
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 18017,
+    "modified": "2026-03-23T22:13:25.195573"
+  },
+  "tradingview_worker.py": {
+    "filename": "tradingview_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class TradingViewWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "TradingViewWorker",
+        "has_execute": false,
+        "line": 31
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 3574,
+    "modified": "2026-03-26T14:07:30.821217"
+  },
+  "validator_worker.py": {
+    "filename": "validator_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class ValidatorWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "ValidatorWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 274,
+    "modified": "2026-03-25T12:18:06.164866"
+  },
+  "vision_worker.py": {
+    "filename": "vision_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Class VisionWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "VisionWorker",
+        "has_execute": false,
+        "line": 3
+      }
+    ],
+    "dangerous_patterns": [],
+    "size": 265,
+    "modified": "2026-03-25T12:18:06.178866"
+  },
+  "voice_worker.py": {
+    "filename": "voice_worker.py",
+    "valid": true,
+    "security_issues": [
+      "Dangerous pattern: Dynamic import",
+      "Class VoiceWorker missing execute() method"
+    ],
+    "syntax_error": null,
+    "import_errors": [],
+    "worker_classes": [
+      {
+        "name": "VoiceWorker",
+        "has_execute": false,
+        "line": 27
+      }
+    ],
+    "dangerous_patterns": [
+      "Dynamic import"
+    ],
+    "size": 3778,
+    "modified": "2026-03-26T14:07:30.824217"
+  }
+}

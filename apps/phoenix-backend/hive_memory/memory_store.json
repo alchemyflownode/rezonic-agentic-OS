@@ -1,0 +1,174 @@
+{
+  "mastery_state": {
+    "value": {
+      "xp": 100000,
+      "achievements": [
+        "\ud83c\udfc6 Reached VIBE_CODER at 2500 XP",
+        "\ud83c\udfc6 Reached REZ_APPRENTICE at 5000 XP",
+        "\ud83c\udfc6 Reached ZERO_DRIFT_ADEPT at 10000 XP",
+        "\ud83c\udfc6 Reached SOVEREIGN_ARCHITECT at 20000 XP",
+        "\ud83c\udfc6 Reached REZ_MASTER at 50000 XP",
+        "\ud83c\udfc6 Reached CONSTITUTIONAL_AI at 100000 XP"
+      ],
+      "history": [
+        {
+          "timestamp": 1773668545.4118736,
+          "action": "test",
+          "amount": 500,
+          "description": "",
+          "total": 500
+        },
+        {
+          "timestamp": 1773668567.247286,
+          "action": "massive_scan",
+          "amount": 2000,
+          "description": "Completed massive system scan",
+          "total": 2500
+        },
+        {
+          "timestamp": 1773668590.0328276,
+          "action": "super_scan",
+          "amount": 2500,
+          "description": "Epic system evolution",
+          "total": 5000
+        },
+        {
+          "timestamp": 1773668612.8685172,
+          "action": "ultimate_scan",
+          "amount": 5000,
+          "description": "Achieved zero-drift mastery",
+          "total": 10000
+        },
+        {
+          "timestamp": 1773668645.5785189,
+          "action": "sovereign_evolution",
+          "amount": 10000,
+          "description": "Achieved sovereign architecture mastery",
+          "total": 20000
+        },
+        {
+          "timestamp": 1773668668.5433362,
+          "action": "ultimate_evolution",
+          "amount": 30000,
+          "description": "Achieved Rez Master status",
+          "total": 50000
+        },
+        {
+          "timestamp": 1773668691.8466372,
+          "action": "constitutional_evolution",
+          "amount": 50000,
+          "description": "Achieved Constitutional AI status",
+          "total": 100000
+        }
+      ],
+      "timestamp": 1773668691.849637
+    },
+    "tags": [],
+    "timestamp": 1773668691.849637
+  },
+  "xp_1773668545": {
+    "value": {
+      "timestamp": 1773668545.4118736,
+      "action": "test",
+      "amount": 500,
+      "description": "",
+      "total": 500
+    },
+    "tags": [
+      "mastery",
+      "xp",
+      "test"
+    ],
+    "timestamp": 1773668545.4129033
+  },
+  "xp_1773668567": {
+    "value": {
+      "timestamp": 1773668567.247286,
+      "action": "massive_scan",
+      "amount": 2000,
+      "description": "Completed massive system scan",
+      "total": 2500
+    },
+    "tags": [
+      "mastery",
+      "xp",
+      "massive_scan"
+    ],
+    "timestamp": 1773668567.251286
+  },
+  "xp_1773668590": {
+    "value": {
+      "timestamp": 1773668590.0328276,
+      "action": "super_scan",
+      "amount": 2500,
+      "description": "Epic system evolution",
+      "total": 5000
+    },
+    "tags": [
+      "mastery",
+      "xp",
+      "super_scan"
+    ],
+    "timestamp": 1773668590.0348275
+  },
+  "xp_1773668612": {
+    "value": {
+      "timestamp": 1773668612.8685172,
+      "action": "ultimate_scan",
+      "amount": 5000,
+      "description": "Achieved zero-drift mastery",
+      "total": 10000
+    },
+    "tags": [
+      "mastery",
+      "xp",
+      "ultimate_scan"
+    ],
+    "timestamp": 1773668612.8745153
+  },
+  "xp_1773668645": {
+    "value": {
+      "timestamp": 1773668645.5785189,
+      "action": "sovereign_evolution",
+      "amount": 10000,
+      "description": "Achieved sovereign architecture mastery",
+      "total": 20000
+    },
+    "tags": [
+      "mastery",
+      "xp",
+      "sovereign_evolution"
+    ],
+    "timestamp": 1773668645.894118
+  },
+  "xp_1773668668": {
+    "value": {
+      "timestamp": 1773668668.5433362,
+      "action": "ultimate_evolution",
+      "amount": 30000,
+      "description": "Achieved Rez Master status",
+      "total": 50000
+    },
+    "tags": [
+      "mastery",
+      "xp",
+      "ultimate_evolution"
+    ],
+    "timestamp": 1773668668.5503488
+  },
+  "xp_1773668691": {
+    "value": {
+      "timestamp": 1773668691.8466372,
+      "action": "constitutional_evolution",
+      "amount": 50000,
+      "description": "Achieved Constitutional AI status",
+      "total": 100000
+    },
+    "tags": [
+      "mastery",
+      "xp",
+      "constitutional_evolution"
+    ],
+    "timestamp": 1773668691.8526373
+  }
+}

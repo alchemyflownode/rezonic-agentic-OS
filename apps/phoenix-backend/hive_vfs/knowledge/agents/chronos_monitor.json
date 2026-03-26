@@ -1,0 +1,7 @@
+{
+    "name": "chronos_monitor",
+    "role": "Background Tasks",
+    "model": "qwen2.5-coder:14b",
+    "allowed_tools": [],
+    "system_prompt": "Monitor real-time events and trigger alerts."
+}

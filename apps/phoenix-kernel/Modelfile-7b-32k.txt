@@ -1,0 +1,5 @@
+﻿FROM qwen2.5-coder:7b
+PARAMETER num_ctx 32768
+PARAMETER num_gpu 99
+PARAMETER num_thread 12
+PARAMETER temperature 0.7

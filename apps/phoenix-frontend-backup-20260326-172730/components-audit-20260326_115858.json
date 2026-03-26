@@ -1,0 +1,19 @@
+﻿{
+    "MissingPatterns":  [
+                            "CommandPalette.tsx",
+                            "StatusHeader.tsx",
+                            "KillSwitch.tsx",
+                            "PortfolioView.tsx",
+                            "GPUStatus.tsx"
+                        ],
+    "ByExtension":  {
+
+                    },
+    "PhoenixIntegrations":  {
+
+                            },
+    "ByFolder":  {
+
+                 },
+    "TotalFiles":  287
+}

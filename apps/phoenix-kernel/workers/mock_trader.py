@@ -1,4 +1,4 @@
-﻿# mock_trader.py - FIXED
+# mock_trader.py - FIXED
 from typing import Dict, Any, List, Optional
 import asyncio
 import random

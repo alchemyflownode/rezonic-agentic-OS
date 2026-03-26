@@ -1,0 +1,344 @@
+﻿{
+    "MissingPatterns":  [
+                            "CommandPalette.tsx",
+                            "StatusHeader.tsx",
+                            "KillSwitch.tsx",
+                            "PortfolioView.tsx",
+                            "GPUStatus.tsx"
+                        ],
+    "ByExtension":  {
+                        ".tsx":  285,
+                        ".ts":  2
+                    },
+    "PhoenixIntegrations":  {
+                                "ClientCursorTracker.tsx":  {
+                                                                "useEffect":  true
+                                                            },
+                                "AITraderPanel.tsx":  {
+                                                          "DriftLock":  true,
+                                                          "useState":  true,
+                                                          "useEffect":  true,
+                                                          "Constitution":  true
+                                                      },
+                                "TelemetryPanel.tsx":  {
+                                                           "SSE":  true,
+                                                           "useEffect":  true,
+                                                           "useState":  true
+                                                       },
+                                "ConsensusViewer.tsx":  {
+                                                            "WebSocket":  true,
+                                                            "useEffect":  true,
+                                                            "useState":  true
+                                                        },
+                                "AeroDock.tsx":  {
+                                                     "useEffect":  true,
+                                                     "useState":  true
+                                                 },
+                                "ModeToggle.tsx":  {
+                                                       "useEffect":  true,
+                                                       "useState":  true
+                                                   },
+                                "CodeBlock.tsx":  {
+                                                      "useEffect":  true,
+                                                      "useState":  true
+                                                  },
+                                "SovereignControlSurface.tsx":  {
+                                                                    "useState":  true
+                                                                },
+                                "LeftSidebar.tsx":  {
+                                                        "Constitution":  true
+                                                    },
+                                "KernelStatus.tsx":  {
+                                                         "Constitution":  true
+                                                     },
+                                "SystemTerminal.tsx":  {
+                                                           "useEffect":  true,
+                                                           "useState":  true
+                                                       },
+                                "AIChat.tsx":  {
+                                                   "useEffect":  true,
+                                                   "useState":  true
+                                               },
+                                "SovereignCanvas.tsx":  {
+                                                            "DriftLock":  true,
+                                                            "useState":  true,
+                                                            "Constitution":  true
+                                                        },
+                                "AgentThought.tsx":  {
+                                                         "useEffect":  true,
+                                                         "useState":  true
+                                                     },
+                                "EntropyField.tsx":  {
+                                                         "useEffect":  true
+                                                     },
+                                "ExecutionLogs.tsx":  {
+                                                          "useEffect":  true,
+                                                          "useState":  true
+                                                      },
+                                "SovereignCodeSurface.tsx":  {
+                                                                 "DriftLock":  true,
+                                                                 "useState":  true,
+                                                                 "useEffect":  true,
+                                                                 "Constitution":  true
+                                                             },
+                                "sidebar.tsx":  {
+                                                    "useCallback":  true,
+                                                    "useEffect":  true,
+                                                    "useState":  true
+                                                },
+                                "ObsidianChat.tsx":  {
+                                                         "useEffect":  true,
+                                                         "useState":  true
+                                                     },
+                                "tooltip.tsx":  {
+                                                    "useState":  true
+                                                },
+                                "MessageRenderer.tsx":  {
+                                                            "DriftLock":  true,
+                                                            "useState":  true,
+                                                            "Constitution":  true
+                                                        },
+                                "TradingViewPanel.tsx":  {
+                                                             "useState":  true
+                                                         },
+                                "index.ts":  {
+                                                 "Constitution":  true,
+                                                 "SovereignMessage":  true
+                                             },
+                                "PremiumTerminal.tsx":  {
+                                                            "useEffect":  true,
+                                                            "useState":  true
+                                                        },
+                                "SovereignTitleBar.tsx":  {
+                                                              "useEffect":  true,
+                                                              "useState":  true
+                                                          },
+                                "ModernChat.tsx":  {
+                                                       "useEffect":  true,
+                                                       "useState":  true
+                                                   },
+                                "BentoControl.tsx":  {
+                                                         "useState":  true
+                                                     },
+                                "SystemHealthOverlay.tsx":  {
+                                                                "HealthEndpoint":  true,
+                                                                "useEffect":  true,
+                                                                "useState":  true
+                                                            },
+                                "WorkerGrid.tsx":  {
+                                                       "Constitution":  true,
+                                                       "useState":  true
+                                                   },
+                                "SovereignMessage.tsx":  {
+                                                             "useState":  true,
+                                                             "DriftLock":  true,
+                                                             "SovereignMessage":  true,
+                                                             "useEffect":  true,
+                                                             "Constitution":  true
+                                                         },
+                                "ModelSelector.tsx":  {
+                                                          "Constitution":  true,
+                                                          "useEffect":  true,
+                                                          "useState":  true
+                                                      },
+                                "WorkerDetails.tsx":  {
+                                                          "useState":  true
+                                                      },
+                                "WhitepaperSection.tsx":  {
+                                                              "Constitution":  true
+                                                          },
+                                "SpecMirror.tsx":  {
+                                                       "useEffect":  true,
+                                                       "useState":  true
+                                                   },
+                                "OSSidebar.tsx":  {
+                                                      "Constitution":  true,
+                                                      "useState":  true
+                                                  },
+                                "ProofBadge.tsx":  {
+                                                       "useEffect":  true,
+                                                       "useState":  true
+                                                   },
+                                "ResizablePanel.tsx":  {
+                                                           "useEffect":  true,
+                                                           "useState":  true
+                                                       },
+                                "calendar.tsx":  {
+                                                     "useEffect":  true
+                                                 },
+                                "ChatInterface.tsx":  {
+                                                          "useEffect":  true,
+                                                          "useState":  true
+                                                      },
+                                "JetBrainsPanel.tsx":  {
+                                                           "useEffect":  true,
+                                                           "useState":  true
+                                                       },
+                                "ObsidianWorkerGrid.tsx":  {
+                                                               "Constitution":  true
+                                                           },
+                                "SearchResults.tsx":  {
+                                                          "useState":  true
+                                                      },
+                                "DevModeWorkspace.tsx":  {
+                                                             "DriftLock":  true,
+                                                             "useState":  true
+                                                         },
+                                "FloatingInput.tsx":  {
+                                                          "useState":  true
+                                                      },
+                                "QuarantinePanel.tsx":  {
+                                                            "useEffect":  true,
+                                                            "useState":  true
+                                                        },
+                                "SovereignCodeBlock.tsx":  {
+                                                               "DriftLock":  true,
+                                                               "useState":  true,
+                                                               "Constitution":  true
+                                                           },
+                                "index.tsx":  {
+                                                  "useState":  true
+                                              },
+                                "StagedFileUpload.tsx":  {
+                                                             "useCallback":  true,
+                                                             "useState":  true
+                                                         },
+                                "CommandBar.tsx":  {
+                                                       "Constitution":  true,
+                                                       "useEffect":  true,
+                                                       "useState":  true
+                                                   },
+                                "PremiumSidebar.tsx":  {
+                                                           "useState":  true
+                                                       },
+                                "SCEPanel.tsx":  {
+                                                     "DriftLock":  true,
+                                                     "useState":  true,
+                                                     "useEffect":  true,
+                                                     "Constitution":  true
+                                                 },
+                                "ChatConsole.tsx":  {
+                                                        "KernelStream":  true,
+                                                        "DriftLock":  true,
+                                                        "SovereignMessage":  true,
+                                                        "useEffect":  true,
+                                                        "useState":  true
+                                                    },
+                                "carousel.tsx":  {
+                                                     "useCallback":  true,
+                                                     "useEffect":  true,
+                                                     "useState":  true
+                                                 },
+                                "TradingViewCard.tsx":  {
+                                                            "useEffect":  true
+                                                        },
+                                "PrimordialUI.tsx":  {
+                                                         "useState":  true
+                                                     },
+                                "BootSequencer.tsx":  {
+                                                          "Constitution":  true,
+                                                          "useEffect":  true,
+                                                          "useState":  true
+                                                      },
+                                "ResizableSplitter.tsx":  {
+                                                              "useCallback":  true,
+                                                              "useEffect":  true,
+                                                              "useState":  true
+                                                          },
+                                "SimulationControls.tsx":  {
+                                                               "useState":  true
+                                                           },
+                                "OSStatusBar.tsx":  {
+                                                        "Constitution":  true,
+                                                        "useEffect":  true,
+                                                        "useState":  true
+                                                    },
+                                "HighDensityWorkerGrid.tsx":  {
+                                                                  "Constitution":  true,
+                                                                  "useState":  true
+                                                              },
+                                "ConstitutionPanel.tsx":  {
+                                                              "Constitution":  true
+                                                          },
+                                "LiveWorkerPipeline.tsx":  {
+                                                               "useEffect":  true,
+                                                               "useState":  true
+                                                           },
+                                "SovereignTracker.tsx":  {
+                                                             "useEffect":  true,
+                                                             "useState":  true
+                                                         },
+                                "RezHiveController.tsx":  {
+                                                              "HealthEndpoint":  true,
+                                                              "KernelStream":  true,
+                                                              "useState":  true,
+                                                              "useEffect":  true,
+                                                              "Constitution":  true
+                                                          },
+                                "PremiumInspector.tsx":  {
+                                                             "useState":  true
+                                                         },
+                                "OSHeader.tsx":  {
+                                                     "Constitution":  true,
+                                                     "useEffect":  true,
+                                                     "useState":  true
+                                                 },
+                                "TradingViewTicker.tsx":  {
+                                                              "useEffect":  true
+                                                          },
+                                "PremiumWorkerGrid.tsx":  {
+                                                              "Constitution":  true
+                                                          },
+                                "NeuralHub.tsx":  {
+                                                      "Constitution":  true,
+                                                      "useEffect":  true,
+                                                      "useState":  true
+                                                  },
+                                "ZeroDriftMemoryMap.tsx":  {
+                                                               "DriftLock":  true,
+                                                               "useState":  true,
+                                                               "Constitution":  true
+                                                           },
+                                "DynamicIsland.tsx":  {
+                                                          "useState":  true
+                                                      },
+                                "PCManagerWidget.tsx":  {
+                                                            "useEffect":  true,
+                                                            "useState":  true
+                                                        },
+                                "SmartRouter.tsx":  {
+                                                        "DriftLock":  true,
+                                                        "useState":  true,
+                                                        "SSE":  true
+                                                    },
+                                "PremiumMainContent.tsx":  {
+                                                               "useState":  true
+                                                           },
+                                "PolicyChainViewer.tsx":  {
+                                                              "useEffect":  true,
+                                                              "useState":  true
+                                                          },
+                                "BotHiveModal.tsx":  {
+                                                         "Constitution":  true,
+                                                         "useState":  true
+                                                     },
+                                "MainContent.tsx":  {
+                                                        "useState":  true
+                                                    }
+                            },
+    "ByFolder":  {
+                     "os":  4,
+                     "panels":  8,
+                     "trading":  1,
+                     "sovereign":  6,
+                     "kernel":  3,
+                     "components":  95,
+                     "review":  9,
+                     "ui":  63,
+                     "_archived":  60,
+                     "nexus":  6,
+                     "cortex":  2,
+                     "_unused":  30
+                 },
+    "TotalFiles":  287
+}

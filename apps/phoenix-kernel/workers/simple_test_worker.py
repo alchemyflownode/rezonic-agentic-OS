@@ -1,30 +1,12 @@
-﻿"""Simple Test Worker for Phoenix"""
-import sys
-from pathlib import Path
-
-parent_dir = Path(__file__).parent.parent
-if str(parent_dir) not in sys.path:
-    sys.path.insert(0, str(parent_dir))
-
-from workers.base_worker import Worker, WorkerConfig
+from base_worker import Worker
 
 class SimpleTestWorker(Worker):
-    """Simple test worker"""
+    def __init__(self):
+        super().__init__("simple_test_worker")
     
-    def __init__(self, config: WorkerConfig = None):
-        super().__init__(config)
-        self.name = "simple_test"
-        self.is_ready = True
-    
-    async def execute(self, task: str, **kwargs) -> dict:
-        self.log("info", f"Processing: {task[:30]}...")
+    async def execute(self, task: str, **kwargs):
         return {
-            "status": "success",
-            "worker": self.name,
-            "content": f"Processed: {task}"
+            "success": True,
+            "worker": "simple_test_worker",
+            "message": f"simple_test_worker: {task[:100]}"
         }
-
-SimpleTestWorker_CONFIG = {
-    "name": "simple_test",
-    "enabled": True
-}

@@ -1,0 +1,9 @@
+{
+    "name": "code_executor",
+    "role": "Python Sandbox",
+    "model": "qwen2.5-coder:14b",
+    "allowed_tools": [
+        "execute_code"
+    ],
+    "system_prompt": "Write and execute perfect Python scripts."
+}

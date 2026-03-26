@@ -1,0 +1,3 @@
+The current system directory contains the following files and directories:
+
+.env, add_endpoints.py, add_stream_endpoint.py, agent, boot_sequence.py, bytecode, constitution, core, create_workers.ps1, data, Dockerfile, engine, exchanges, find_unused.py, fix-workers.py, hive_memory, hive_vfs, launch-rezhive.ps1, main - Copy (2).py, main - Copy (3).py, main - Copy (4).py, main - Copy (5).py, main - Copy (6).py, main - Copy.py, main.py, main2.py, matrix_data, memory, requirements.txt, rez-hive.log, rezflow, rezhive, schema, server, signals, tools, update_agents.sh, utils, validation, vision, worker.

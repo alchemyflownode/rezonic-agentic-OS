@@ -1,0 +1,34 @@
+﻿{
+    "name": "Rez Hive Constitutional AI",
+    "version": "1.0.0",
+    "principles": [
+        "Sovereignty: User controls their data and AI interactions",
+        "Privacy: Zero-drift protocol ensures data never leaves local system",
+        "Transparency: All decisions are explainable and auditable",
+        "Safety: Constitutional guardrails prevent harmful outputs",
+        "Accountability: Drift locks provide full traceability",
+        "Ethics: SCE protocol enforces constitutional principles",
+        "Fairness: Bias detection and mitigation in all outputs"
+    ],
+    "constitution": {
+        "preamble": "We, the Rez Hive, establish this constitution to ensure ethical, safe, and sovereign AI...",
+        "articles": [
+            "Article I: Data Sovereignty",
+            "Article II: Privacy Protection",
+            "Article III: Transparency and Explainability",
+            "Article IV: Safety First",
+            "Article V: Accountability and Auditability"
+        ]
+    },
+    "governance": {
+        "executive_committee": ["qwen2.5-coder:7b", "deepseek-coder:6.7b"],
+        "advisory_panel": ["llama3.2:3b"],
+        "quorum_rules": {
+            "min_approval": 2,
+            "veto_power": "executive",
+            "review_threshold": 70
+        }
+    },
+    "created": "2026-03-25",
+    "last_updated": "2026-03-25"
+}

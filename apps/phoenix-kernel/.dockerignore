@@ -1,0 +1,27 @@
+# Docker ignore file
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+ENV/
+.env
+.env.local
+.git/
+.gitignore
+README.md
+.vscode/
+.idea/
+*.log
+logs/
+data/backups/
+data/memory/sce_*.json
+*.db-shm
+*.db-wal

@@ -1,0 +1,154 @@
+{
+  "4": {
+    "inputs": {
+      "ckpt_name": "NoobAI-XL-Vpred-v1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "text, watermark",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "25": {
+    "inputs": {
+      "seed": 1069305562890564,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "sparsity_threshold": 0.8,
+      "rez_mode": "Balanced",
+      "enable_cache": true,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "28",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "31",
+        0
+      ]
+    },
+    "class_type": "RezTurboKSampler",
+    "_meta": {
+      "title": "Rez Turbo KSampler"
+    }
+  },
+  "27": {
+    "inputs": {
+      "enable": true,
+      "electricity_rate": 0.12,
+      "session_name": "default"
+    },
+    "class_type": "RezPowerMonitor",
+    "_meta": {
+      "title": "Rez Power Monitor"
+    }
+  },
+  "28": {
+    "inputs": {
+      "text": "{\n  \"sce\": \"SCE-V\",\n  \"version\": \"1.0.0\",\n  \"domain\": \"IMAGE_GENERATION\",\n  \"mode\": \"COMPRESSED\",\n  \"intent\": \"Aesthetic_Surreal_Nature\",\n\n  \"anchors\": {\n    \"primary_subject\": \"Glass bottle\",\n    \"secondary_subject\": \"Landscape contained within bottle\"\n  },\n\n  \"style\": {\n    \"visual_tone\": [\"beautiful\", \"dreamlike\", \"cinematic\"],\n    \"color_palette\": [\"purple\", \"galaxy\", \"cosmic glow\"],\n    \"material_focus\": [\"glass\", \"light refraction\"]\n  },\n\n  \"composition\": {\n    \"scene_type\": \"surreal miniature world\",\n    \"framing\": \"centered object\",\n    \"depth\": \"macro foreground, infinite interior depth\"\n  },\n\n  \"quality_flags\": {\n    \"detail\": \"high\",\n    \"lighting\": \"soft cinematic\",\n    \"render_bias\": \"artstation-grade\"\n  },\n\n  \"negative\": [\n    \"low resolution\",\n    \"blurry\",\n    \"text\",\n    \"watermark\",\n    \"distorted glass\"\n  ]\n}\n",
+      "rez_analyze": true,
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "RezCLIPEncode",
+    "_meta": {
+      "title": "Rez CLIP Encode"
+    }
+  },
+  "29": {
+    "inputs": {
+      "preview": "\n{\n  \"gpu\": \"NVIDIA GeForce RTX 3060\",\n  \"vram_used_gb\": 0.0,\n  \"vram_total_gb\": 12.0,\n  \"watts_saved\": 60,\n  \"total_watts_saved\": 60,\n  \"cost_saved_usd\": 0.0000,\n  \"runtime_hours\": 0.00\n}\n",
+      "previewMode": null,
+      "source": [
+        "27",
+        1
+      ]
+    },
+    "class_type": "PreviewAny",
+    "_meta": {
+      "title": "Preview as Text"
+    }
+  },
+  "30": {
+    "inputs": {
+      "preview": "\n[REZ POWER DASHBOARD - default]\n================================\nGPU: NVIDIA GeForce RTX 3060\nVRAM: 0.0/12.0 GB\nRuntime: 0.00 hours\n\nSAVINGS THIS SAMPLE:\n├─ Watts saved: 60 W\n├─ Compute saved: ~30%\n\nSESSION TOTAL:\n├─ Total watts saved: 60 W\n├─ Cost saved: $0.0000\n└─ Rate: $0.12/kWh\n\nEFFICIENCY: Good (Rez Swarm active)\n",
+      "previewMode": null,
+      "source": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "PreviewAny",
+    "_meta": {
+      "title": "Preview as Text"
+    }
+  },
+  "31": {
+    "inputs": {
+      "width": 16,
+      "height": 512,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "32": {
+    "inputs": {
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "25",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  }
+}
