@@ -1,0 +1,5 @@
+﻿apps/phoenix-kernel/data/deepseek_qwen/Google AI Studio/Prince To Prophet, Plagues Unleashed
+apps/phoenix-kernel/data/deepseek_qwen/deepseekchat.json
+apps/phoenix-kernel/data/deepseek_qwen/qwenchat.json
+apps/phoenix-kernel/data/event_store/events.db
+apps/phoenix-kernel/data/vera/ledger/v8-kernel.key

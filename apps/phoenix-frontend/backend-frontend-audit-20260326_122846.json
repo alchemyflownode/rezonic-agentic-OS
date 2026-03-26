@@ -1,0 +1,140 @@
+﻿{
+    "MatchPercent":  0,
+    "BackendCommands":  [
+                            "backtest",
+                            "code",
+                            "collaborate",
+                            "generate",
+                            "health",
+                            "kill",
+                            "list",
+                            "okiru",
+                            "portfolio",
+                            "search",
+                            "symbiote",
+                            "trade",
+                            "workers"
+                        ],
+    "Score":  30,
+    "FrontendCommands":  {
+
+                         },
+    "CommandMatrix":  {
+                          "portfolio":  {
+                                            "Backend":  true,
+                                            "Description":  "View portfolio",
+                                            "Frontend":  false
+                                        },
+                          "workers":  {
+                                          "Backend":  true,
+                                          "Description":  "List all workers",
+                                          "Frontend":  false
+                                      },
+                          "video":  {
+                                        "Backend":  false,
+                                        "Description":  "Generate video",
+                                        "Frontend":  false
+                                    },
+                          "code":  {
+                                       "Backend":  true,
+                                       "Description":  "Generate code",
+                                       "Frontend":  false
+                                   },
+                          "kill":  {
+                                       "Backend":  true,
+                                       "Description":  "Emergency stop",
+                                       "Frontend":  false
+                                   },
+                          "symbiote":  {
+                                           "Backend":  true,
+                                           "Description":  "Symbiote status",
+                                           "Frontend":  false
+                                       },
+                          "kill-status":  {
+                                              "Backend":  false,
+                                              "Description":  "Kill switch status",
+                                              "Frontend":  false
+                                          },
+                          "constitution":  {
+                                               "Backend":  false,
+                                               "Description":  "Constitution history",
+                                               "Frontend":  false
+                                           },
+                          "collab-stats":  {
+                                               "Backend":  false,
+                                               "Description":  "Collaboration stats",
+                                               "Frontend":  false
+                                           },
+                          "list":  {
+                                       "Backend":  true,
+                                       "Description":  "List directory",
+                                       "Frontend":  false
+                                   },
+                          "sysinfo":  {
+                                          "Backend":  false,
+                                          "Description":  "System info",
+                                          "Frontend":  false
+                                      },
+                          "read":  {
+                                       "Backend":  false,
+                                       "Description":  "Read file",
+                                       "Frontend":  false
+                                   },
+                          "health":  {
+                                         "Backend":  true,
+                                         "Description":  "System health check",
+                                         "Frontend":  false
+                                     },
+                          "collaborate":  {
+                                              "Backend":  true,
+                                              "Description":  "Worker collaboration",
+                                              "Frontend":  false
+                                          },
+                          "okiru":  {
+                                        "Backend":  true,
+                                        "Description":  "Re-run OKIRU boot",
+                                        "Frontend":  false
+                                    },
+                          "generate":  {
+                                           "Backend":  true,
+                                           "Description":  "Generate image via ComfyUI",
+                                           "Frontend":  false
+                                       },
+                          "search":  {
+                                         "Backend":  true,
+                                         "Description":  "Web search",
+                                         "Frontend":  false
+                                     },
+                          "backtest":  {
+                                           "Backend":  true,
+                                           "Description":  "Run backtest",
+                                           "Frontend":  false
+                                       },
+                          "memory":  {
+                                         "Backend":  false,
+                                         "Description":  "Memory operations",
+                                         "Frontend":  false
+                                     },
+                          "scan":  {
+                                       "Backend":  false,
+                                       "Description":  "Code scanner",
+                                       "Frontend":  false
+                                   },
+                          "trade":  {
+                                        "Backend":  true,
+                                        "Description":  "Paper trading",
+                                        "Frontend":  false
+                                    }
+                      },
+    "MatchedCommands":  0,
+    "Recommendations":  [
+                            "Add UI buttons/commands for: backtest, code, collaborate, generate, health, kill, list, okiru, portfolio, search, symbiote, trade, workers",
+                            "Add Authorization: Bearer headers to all API calls",
+                            "Add KillSwitch component to dashboard for emergency stops"
+                        ],
+    "Timestamp":  "2026-03-26 12:28:46",
+    "ApiCallsCount":  7,
+    "SSECount":  10,
+    "TotalBackendCommands":  13,
+    "AuthHeaderCount":  0
+}

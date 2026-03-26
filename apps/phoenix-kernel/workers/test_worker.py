@@ -1,4 +1,4 @@
-﻿"""Test worker for verification"""
+"""Test worker for verification"""
 
 import asyncio
 import sys

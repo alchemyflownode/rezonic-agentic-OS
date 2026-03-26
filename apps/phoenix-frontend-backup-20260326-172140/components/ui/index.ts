@@ -1,0 +1,1 @@
+﻿export { SovereignCard } from './SovereignCard';

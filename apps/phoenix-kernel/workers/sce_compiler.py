@@ -1,4 +1,4 @@
-﻿"""SCE Compiler Worker"""
+"""SCE Compiler Worker"""
 
 import asyncio
 import json

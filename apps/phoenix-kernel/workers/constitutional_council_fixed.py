@@ -1,4 +1,4 @@
-﻿# constitutional_council_fixed.py - FIXED
+# constitutional_council_fixed.py - FIXED
 from typing import Dict, Any, List
 import asyncio
 import logging

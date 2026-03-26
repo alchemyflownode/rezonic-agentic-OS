@@ -1,0 +1,254 @@
+"""Harvester Worker - Uses enhanced base worker"""
+import json
+import asyncio
+from pathlib import Path
+from typing import Dict, Any, List
+from base_worker import Worker, WorkerConfig
+
+class HarvesterWorker(Worker):
+    """The Soul Eater - Ingests chat exports and folder data into the Hive"""
+    
+    def __init__(self, memory_bus=None):
+        config = WorkerConfig(
+            name="harvester_worker",
+            enabled=True,
+            timeout=120,  # Longer timeout for file operations
+            max_concurrent=3,
+            retry_count=2
+        )
+        super().__init__(config)
+        self.memory_bus = memory_bus
+        self.supported_extensions = {
+            '.json', '.md', '.txt', '.py', '.js', '.ts', '.html', '.css',
+            '.yaml', '.yml', '.xml', '.csv', '.log', '.rst', '.markdown'
+        }
+        self.max_file_size = 10 * 1024 * 1024  # 10MB max
+    
+    def set_memory_bus(self, memory_bus):
+        self.memory_bus = memory_bus
+    
+    async def execute(self, task: str, **kwargs) -> Dict[str, Any]:
+        """Execute harvester task"""
+        self.logger.info(f"Processing task: {task[:100]}")
+        
+        if task.startswith('/harvest'):
+            return await self._handle_harvest(task)
+        elif task.startswith('/scan'):
+            return await self._handle_scan(task)
+        elif task.startswith('/ingest'):
+            return await self._handle_ingest(task)
+        else:
+            return {"content": "❌ Unknown command. Use /harvest, /scan, or /ingest"}
+    
+    async def _handle_harvest(self, task: str) -> Dict[str, Any]:
+        """Handle /harvest command"""
+        parts = task.split()
+        if len(parts) < 2:
+            return {"success": False, "error": "Usage: /harvest <path> [--recursive]"}
+        
+        target_path = parts[1]
+        recursive = '--recursive' in parts or '-r' in parts
+        
+        try:
+            path = Path(target_path)
+            if not path.exists():
+                return {"success": False, "error": f"Path does not exist: {target_path}"}
+            
+            results = await self._harvest_path(path, recursive)
+            
+            # Store to memory if available
+            if self.memory_bus:
+                await self._store_to_memory(results)
+            
+            return {
+                "success": True,
+                "content": self._format_harvest_results(results),
+                "harvested_files": results,
+                "count": len(results)
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Harvest failed: {e}")
+            raise  # Will be caught by base worker
+    
+    async def _harvest_path(self, path: Path, recursive: bool) -> List[Dict[str, Any]]:
+        """Harvest files from a path"""
+        results = []
+        
+        if path.is_file():
+            result = await self._harvest_file(path)
+            results.append(result)
+        elif path.is_dir():
+            pattern = "**/*" if recursive else "*"
+            for file_path in path.glob(pattern):
+                if file_path.is_file() and file_path.suffix.lower() in self.supported_extensions:
+                    result = await self._harvest_file(file_path)
+                    results.append(result)
+        
+        return results
+    
+    async def _harvest_file(self, file_path: Path) -> Dict[str, Any]:
+        """Harvest a single file"""
+        try:
+            size = file_path.stat().st_size
+            if size > self.max_file_size:
+                return {
+                    "path": str(file_path),
+                    "error": f"File too large ({size} bytes, max {self.max_file_size})",
+                    "size": size
+                }
+            
+            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+            
+            return {
+                "path": str(file_path),
+                "name": file_path.name,
+                "extension": file_path.suffix,
+                "size": size,
+                "content": content[:10000] if size > 10000 else content,  # Truncate for memory
+                "type": "text"
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error harvesting {file_path}: {e}")
+            return {
+                "path": str(file_path),
+                "error": str(e)
+            }
+    
+    async def _handle_scan(self, task: str) -> Dict[str, Any]:
+        """Handle /scan command"""
+        parts = task.split()
+        if len(parts) < 2:
+            return {"success": False, "error": "Usage: /scan <path> [--recursive]"}
+        
+        target_path = parts[1]
+        recursive = '--recursive' in parts or '-r' in parts
+        
+        try:
+            path = Path(target_path)
+            if not path.exists():
+                return {"success": False, "error": f"Path does not exist: {target_path}"}
+            
+            files = await self._scan_path(path, recursive)
+            
+            return {
+                "success": True,
+                "content": f"📁 Found {len(files)} files:\n" + "\n".join(files[:50]) +
+                          (f"\n... and {len(files)-50} more" if len(files) > 50 else ""),
+                "files": files
+            }
+            
+        except Exception as e:
+            raise
+    
+    async def _scan_path(self, path: Path, recursive: bool) -> List[str]:
+        """Scan path and return list of files"""
+        files = []
+        if path.is_file():
+            files.append(str(path))
+        elif path.is_dir():
+            pattern = "**/*" if recursive else "*"
+            for file_path in path.glob(pattern):
+                if file_path.is_file():
+                    files.append(str(file_path))
+        return files
+    
+    async def _handle_ingest(self, task: str) -> Dict[str, Any]:
+        """Handle /ingest command"""
+        parts = task.split()
+        if len(parts) < 2:
+            return {"success": False, "error": "Usage: /ingest <path>"}
+        
+        file_path = parts[1]
+        
+        try:
+            path = Path(file_path)
+            if not path.exists():
+                return {"success": False, "error": f"File does not exist: {file_path}"}
+            
+            content = await self._ingest_chat_export(path)
+            
+            if self.memory_bus:
+                await self._store_to_memory([content])
+            
+            return {
+                "success": True,
+                "content": f"✅ Ingested chat export: {path.name}",
+                "ingested": content
+            }
+            
+        except Exception as e:
+            raise
+    
+    async def _ingest_chat_export(self, file_path: Path) -> Dict[str, Any]:
+        """Ingest ChatGPT or Claude export"""
+        with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+            content = f.read()
+        
+        try:
+            data = json.loads(content)
+            return {
+                "path": str(file_path),
+                "name": file_path.name,
+                "type": "chat_export",
+                "size": len(content),
+                "keys": list(data.keys()) if isinstance(data, dict) else None
+            }
+        except json.JSONDecodeError:
+            return {
+                "path": str(file_path),
+                "name": file_path.name,
+                "type": "text",
+                "size": len(content),
+                "preview": content[:500]
+            }
+    
+    async def _store_to_memory(self, harvested_items: List[Dict[str, Any]]):
+        """Store harvested items to memory bus"""
+        if not self.memory_bus:
+            return
+        
+        for item in harvested_items:
+            if 'error' in item:
+                continue
+            
+            try:
+                await self.memory_bus.store(item)
+                self.logger.debug(f"Stored {item.get('path')} to memory")
+            except Exception as e:
+                self.logger.error(f"Failed to store to memory: {e}")
+    
+    def _format_harvest_results(self, results: List[Dict[str, Any]]) -> str:
+        """Format harvest results for display"""
+        successful = [r for r in results if 'error' not in r]
+        failed = [r for r in results if 'error' in r]
+        
+        output = [f"✅ Harvest complete: {len(successful)} files harvested"]
+        
+        if successful:
+            output.append("\n📄 Harvested files:")
+            for r in successful[:20]:
+                size_kb = r.get('size', 0) / 1024
+                output.append(f"  - {r['name']} ({size_kb:.1f} KB)")
+            
+            if len(successful) > 20:
+                output.append(f"  ... and {len(successful)-20} more")
+        
+        if failed:
+            output.append(f"\n❌ Failed files ({len(failed)}):")
+            for r in failed[:5]:
+                output.append(f"  - {r['path']}: {r.get('error', 'Unknown error')}")
+        
+        return "\n".join(output)
+    
+    async def health_check(self) -> Dict[str, Any]:
+        """Return worker health status"""
+        metrics = await self.get_metrics()
+        return {
+            "worker": self.name,
+            "status": "healthy",
+            "metrics": metrics,
+            "memory_bus_connected": self.memory_bus is not None
+        }

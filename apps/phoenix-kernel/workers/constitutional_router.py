@@ -1,4 +1,4 @@
-﻿# constitutional_router.py - FIXED
+# constitutional_router.py - FIXED
 from typing import Dict, Any, Optional
 import asyncio
 import logging

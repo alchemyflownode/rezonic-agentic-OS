@@ -1,4 +1,4 @@
-﻿# ollama_constitutional_enhanced.py - FIXED
+# ollama_constitutional_enhanced.py - FIXED
 from typing import Dict, Any, Optional, AsyncGenerator
 import asyncio
 import httpx

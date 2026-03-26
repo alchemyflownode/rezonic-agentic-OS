@@ -1,3 +1,10 @@
+# AUTO-FIXED IMPORT PATH
+import sys
+from pathlib import Path
+_workers_dir = Path(__file__).parent.resolve()
+if str(_workers_dir) not in sys.path:
+    sys.path.insert(0, str(_workers_dir))
+# END AUTO-FIX
 # graceful_shutdown.py
 """Graceful shutdown handler for Phoenix Kernel"""
 

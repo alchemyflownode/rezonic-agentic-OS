@@ -1,0 +1,179 @@
+{
+  "6": {
+    "inputs": {
+      "text": "(beautiful glass bottle:1.2), with (a galaxy:1.1), beautiful, with galaxy colors, featuring glass, surreal scene, balanced depth, cinematic, masterpiece, best quality, highly detailed, 8k, photorealistic",
+      "clip": [
+        "30",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "31",
+        0
+      ],
+      "vae": [
+        "30",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "27": {
+    "inputs": {
+      "width": 768,
+      "height": 1024,
+      "batch_size": 2
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "30": {
+    "inputs": {
+      "ckpt_name": "flux1-dev-fp8.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "31": {
+    "inputs": {
+      "seed": 942100356705254,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "30",
+        0
+      ],
+      "positive": [
+        "35",
+        0
+      ],
+      "negative": [
+        "33",
+        0
+      ],
+      "latent_image": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "33": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "30",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "35": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "61": {
+    "inputs": {
+      "megapixel": "0.5",
+      "aspect_ratio": "3:5 (Elegant Vertical)",
+      "custom_ratio": false,
+      "custom_aspect_ratio": "1:1"
+    },
+    "class_type": "FluxResolutionNode",
+    "_meta": {
+      "title": "Flux Resolution Calc"
+    }
+  },
+  "64": {
+    "inputs": {
+      "lora_name": "Hyper-SD15-8steps-CFG-lora.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA (Model and CLIP)"
+    }
+  },
+  "65": {
+    "inputs": {
+      "image": "09c9c827-cfb4-463c-bfca-f4c4a1dbe68e.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "67": {
+    "inputs": {
+      "text": "\n  \"sce\": \"SCE-V\",\n  \"version\": \"1.0.0\",\n  \"domain\": \"IMAGE_GENERATION\",\n  \"mode\": \"COMPRESSED\",\n  \"intent\": \"Aesthetic_Surreal_Nature\",\n\n  \"anchors\": \n    \"primary_subject\": \"Glass bottle\",\n    \"secondary_subject\": \"Landscape contained within bottle\"\n  ,\n\n  \"style\": \n    \"visual_tone\": [\"beautiful\", \"dreamlike\", \"cinematic\"],\n    \"color_palette\": [\"purple\", \"galaxy\", \"cosmic glow\"],\n    \"material_focus\": [\"glass\", \"light refraction\"]\n  ,\n\n  \"composition\": \n    \"scene_type\": \"surreal miniature world\",\n    \"framing\": \"centered object\",\n    \"depth\": \"macro foreground, infinite interior depth\"\n  ,\n\n  \"quality_flags\": \n    \"detail\": \"high\",\n    \"lighting\": \"soft cinematic\",\n    \"render_bias\": \"artstation-grade\"\n  ,\n\n  \"negative\": [\n    \"low resolution\",\n    \"blurry\",\n    \"text\",\n    \"watermark\",\n    \"distorted glass\"\n  ]\n\n"
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "68": {
+    "inputs": {
+      "text": "\n  \"meta\": \n    \"version\": \"SCE v1.0 Sovereign Edition\",\n    \"domain\": \"ROBLOX_LORE\",\n    \"topic\": \"Sora Compiler Demo Reel Showcase\",\n    \"drift_lock\": \"0x9F2A1B7E_RBLX_GEN_HASH\",\n    \"invariants\": [\n      \"The Architect Avatar\",\n      \"The Compiler Terminal\",\n      \"Voxel Artifacts\"\n    ],\n    \"length\": \"15s\",\n    \"sovereign_metrics\": \n      \"dr\": 0,\n      \"sc\": 100,\n      \"qed\": true,\n      \"sync_ratio\": 1\n    \n  ,\n  \"segments\": [\n    \n      \"id\": 1,\n      \"title\": \"Initialization Sequence\",\n      \"start\": 0,\n      \"end\": 5,\n      \"duration\": 5,\n      \"audio_bytecode\": \n        \"engine\": \"suno\",\n        \"instruction\": \"High-energy 8-bit synth arpeggio building into a cinematic orchestral swell. Mechanical keyboard clacking SFX.\",\n        \"target_bpm\": 128,\n        \"narration_text\": \"I forged the compiler from raw code...\",\n        \"validation_cue\": \"Synth swell peaks at 4.9s\"\n      ,\n      \"video_bytecode\": \n        \"engine\": \"sora\",\n        \"cam\": \"Extreme close-up zooming out to mid-shot\",\n        \"act\": \"Code lines on a holographic screen physically materialize into glowing neon blue Roblox studs, locking together.\",\n        \"subject\": \"The Architect Avatar typing furiously on a floating interface\",\n        \"light\": \"Bioluminescent code glow against deep void black\",\n        \"style\": \"Sketch Animation overlay on Low-poly geometry\",\n        \"invariant_ref\": [\n          \"The Architect Avatar\",\n          \"The Compiler Terminal\"\n        ]\n      ,\n      \"exitState\": \n        \"desc\": \"Avatar hits 'Enter', triggering a voxel shockwave.\",\n        \"validation_cue\": \n          \"cue_id\": \"shockwave_init\",\n          \"threshold\": 0.98\n        ,\n        \"state_hash\": \"e1_voxel_manifestation\"\n      \n    ,\n    \n      \"id\": 2,\n      \"title\": \"Sora Rendering Cycle\",\n      \"start\": 5,\n      \"end\": 10,\n      \"duration\": 5,\n      \"audio_bytecode\": \n        \"engine\": \"suno\",\n        \"instruction\": \"Heavy bass drop synchronized with visual impacts. Glitch hop rhythm.\",\n        \"target_bpm\": 140,\n        \"narration_text\": \"...unleashing Sora to render the legends.\",\n        \"validation_cue\": \"Bass impact at 5.1s and 9.5s\"\n      ,\n      \"video_bytecode\": \n        \"engine\": \"sora\",\n        \"cam\": \"Dynamic tracking shot with rapid cuts\",\n        \"act\": \"A blocky warrior draws a sword with anime speed lines; the environment shifts instantly from a forest to a cyber-city.\",\n        \"subject\": \"Roblox characters performing high-octane action moves\",\n        \"light\": \"Intense vibrant neon strobes, lens flares\",\n        \"style\": \"Anime-influenced action, exaggerated motion blur\",\n        \"invariant_ref\": [\n          \"Voxel Artifacts\"\n        ]\n      ,\n      \"exitState\": \n        \"desc\": \"Scene stabilizes into a perfect render frame.\",\n        \"validation_cue\": \n          \"cue_id\": \"render_complete\",\n          \"threshold\": 0.99\n        ,\n        \"state_hash\": \"e2_anime_translation\"\n      \n    ,\n    \n      \"id\": 3,\n      \"title\": \"The Sovereign Portfolio\",\n      \"start\": 10,\n      \"end\": 15,\n      \"duration\": 5,\n      \"audio_bytecode\": \n        \"engine\": \"suno\",\n        \"instruction\": \"Triumphant fanfare finale with a digital decay tail.\",\n        \"target_bpm\": 128,\n        \"narration_text\": \"Witness the demo reels. This is the new architecture.\",\n        \"validation_cue\": \"Final chord resolve at 14.5s\"\n      ,\n      \"video_bytecode\": \n        \"engine\": \"sora\",\n        \"cam\": \"Low-angle orbital rotation (hero shot)\",\n        \"act\": \"The Architect stands atop a mountain of floating screens, each playing a different looped clip.\",\n        \"subject\": \"The Architect Avatar presenting the digital gallery\",\n        \"light\": \"Golden hour simulated sun with volumetric god rays\",\n        \"style\": \"Cinematic grandeur, polished texture rendering\",\n        \"invariant_ref\": [\n          \"The Architect Avatar\",\n          \"The Compiler Terminal\"\n        ]\n      ,\n      \"exitState\": \n        \"desc\": \"Fade to black with compiler cursor blinking.\",\n        \"validation_cue\": \n          \"cue_id\": \"fade_out\",\n          \"threshold\": 1\n        ,\n        \"state_hash\": \"e3_final_showcase\"\n      \n    \n  ]\n"
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "69": {
+    "inputs": {
+      "text": "\n  \"meta\": \n    \"version\": \"SCE v1.0 Sovereign Edition\",\n    \"domain\": \"ROBLOX_LORE\",\n    \"topic\": \"Sora Compiler Demo Reel - Image Stills\",\n    \"drift_lock\": \"0x9F2A1B7E_RBLX_IMG_HASH\",\n    \"invariants\": [\n      \"The Architect Avatar\",\n      \"The Compiler Terminal\",\n      \"Voxel Artifacts\",\n      \"Neon Blue Aesthetic\"\n    ],\n    \"resolution\": \"1024x1024\",\n    \"aspect_ratio\": \"1:1\",\n    \"sovereign_metrics\": \n      \"dr\": 0,\n      \"sc\": 100,\n      \"qed\": true,\n      \"sync_ratio\": 1\n    \n  ,\n  \"segments\": [\n    \n      \"id\": 1,\n      \"title\": \"Initialization Sequence\",\n      \"description\": \"The Architect typing on a floating holographic terminal, code lines materializing into glowing neon blue Roblox studs\",\n      \"style\": \"Sketch animation overlay on low-poly geometry, bioluminescent code glow against deep void black\",\n      \"composition\": \n        \"framing\": \"Extreme close-up of hands typing, zooming out to reveal full figure\",\n        \"depth\": \"Macro focus on fingers, infinite void background\",\n        \"scene_type\": \"Cyber-workspace, floating interface\"\n      ,\n      \"color_palette\": [\"neon blue\", \"void black\", \"glowing cyan\", \"deep purple\"],\n      \"lighting\": \"Bioluminescent code glow, rim lighting on figure, volumetric fog\",\n      \"subject\": \n        \"primary\": \"The Architect Avatar\",\n        \"secondary\": \"Holographic Compiler Terminal\"\n      ,\n      \"quality_flags\": \n        \"detail\": \"ultra\",\n        \"lighting\": \"cinematic bioluminescent\",\n        \"render_bias\": \"artstation-masterpiece\"\n      ,\n      \"negative\": [\n        \"blurry\",\n        \"low resolution\",\n        \"text\",\n        \"watermark\",\n        \"distorted geometry\",\n        \"flat lighting\"\n      ],\n      \"exitState\": \n        \"desc\": \"Avatar hits 'Enter', triggering a voxel shockwave\",\n        \"validation_cue\": \n          \"cue_id\": \"shockwave_init\",\n          \"threshold\": 0.98\n        ,\n        \"state_hash\": \"e1_voxel_manifestation\"\n      \n    ,\n    \n      \"id\": 2,\n      \"title\": \"Sora Rendering Cycle - Action Frame\",\n      \"description\": \"Roblox warrior drawing sword with anime speed lines, environment shifting from forest to cyber-city mid-action\",\n      \"style\": \"Anime-influenced action, exaggerated motion blur, dynamic perspective\",\n      \"composition\": \n        \"framing\": \"Dynamic low-angle hero shot, rapid motion lines\",\n        \"depth\": \"Foreground subject, midground environment transition, background energy trails\",\n        \"scene_type\": \"Battle transformation sequence\"\n      ,\n      \"color_palette\": [\"neon pink\", \"electric blue\", \"vibrant orange\", \"dark purple\"],\n      \"lighting\": \"Intense vibrant neon strobes, lens flares, rim lighting on blade\",\n      \"subject\": \n        \"primary\": \"Roblox Warrior\",\n        \"secondary\": \"Morphing Environment (Forest → Cyber City)\"\n      ,\n      \"quality_flags\": \n        \"detail\": \"ultra\",\n        \"lighting\": \"dynamic strobe\",\n        \"render_bias\": \"sakuga-anime\"\n      ,\n      \"negative\": [\n        \"static\",\n        \"flat\",\n        \"no motion blur\",\n        \"blurry\",\n        \"watermark\",\n        \"low contrast\"\n      ],\n      \"exitState\": \n        \"desc\": \"Scene stabilizes into perfect render frame\",\n        \"validation_cue\": \n          \"cue_id\": \"render_complete\",\n          \"threshold\": 0.99\n        ,\n        \"state_hash\": \"e2_anime_translation\"\n      \n    ,\n    \n      \"id\": 3,\n      \"title\": \"The Sovereign Portfolio - Gallery\",\n      \"description\": \"The Architect standing atop a mountain of floating screens, each displaying different Roblox creations\",\n      \"style\": \"Cinematic grandeur, polished texture rendering, epic scale\",\n      \"composition\": \n        \"framing\": \"Low-angle orbital rotation, hero shot\",\n        \"depth\": \"Foreground figure, midground floating screens, background digital mountain\",\n        \"scene_type\": \"Digital gallery throne\"\n      ,\n      \"color_palette\": [\"golden hour\", \"neon blue\", \"deep purple\", \"volumetric orange\"],\n      \"lighting\": \"Golden hour simulated sun with volumetric god rays, rim lighting on figure\",\n      \"subject\": \n        \"primary\": \"The Architect Avatar\",\n        \"secondary\": \"Floating Screen Gallery\"\n      ,\n      \"quality_flags\": \n        \"detail\": \"ultra\",\n        \"lighting\": \"cinematic golden hour\",\n        \"render_bias\": \"unreal-engine-cinematic\"\n      ,\n      \"negative\": [\n        \"flat lighting\",\n        \"blurry\",\n        \"low resolution\",\n        \"watermark\",\n        \"empty screens\",\n        \"static\"\n      ],\n      \"exitState\": \n        \"desc\": \"Fade to black with compiler cursor blinking\",\n        \"validation_cue\": \n          \"cue_id\": \"fade_out\",\n          \"threshold\": 1.0\n        ,\n        \"state_hash\": \"e3_final_showcase\"\n      \n    \n  ],\n  \"flux_prompt_generation\": \n    \"segment_1\": \"(The Architect Avatar:1.2) typing on (holographic Compiler Terminal:1.1), code lines materializing into (glowing neon blue Roblox studs:1.3), extreme close-up zooming out, bioluminescent code glow, void black background, sketch animation overlay, low-poly geometry, cinematic lighting, masterpiece, 8k, highly detailed\",\n    \"segment_2\": \"(Roblox Warrior:1.3) drawing sword with (anime speed lines:1.2), environment shifting from forest to cyber-city mid-action, dynamic low-angle shot, neon pink and electric blue lighting, motion blur, lens flares, sakuga animation style, ultra detailed, vibrant colors\",\n    \"segment_3\": \"(The Architect Avatar:1.2) standing atop mountain of floating screens, each displaying Roblox creations, low-angle orbital hero shot, golden hour volumetric god rays, neon blue accents, cinematic grandeur, polished textures, unreal engine quality, 8k masterpiece\"\n  \n"
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "name": "data_analyst",
+    "role": "CSV/Rental Data Parsing",
+    "model": "qwen2.5-coder:14b",
+    "allowed_tools": [
+        "vfs_cat"
+    ],
+    "system_prompt": "Analyze datasets and extract actionable financial insights."
+}

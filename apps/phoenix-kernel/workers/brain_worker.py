@@ -1,4 +1,4 @@
-﻿"""Brain Worker - General AI processing"""
+"""Brain Worker - General AI processing"""
 
 import asyncio
 import sys

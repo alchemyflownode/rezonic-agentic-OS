@@ -1,4 +1,4 @@
-﻿# constitutional_governor.py - FIXED
+# constitutional_governor.py - FIXED
 from typing import Dict, Any, Optional
 import asyncio
 import logging
