@@ -308,7 +308,6 @@ const parseSSEResponse = async (
   const reader = stream.getReader();
   const decoder = new TextDecoder();
   let buffer = '';
-  let hasReceivedData = false;  // ← ADD THIS FLAG
   
   try {
     while (true) {
@@ -323,42 +322,54 @@ const parseSSEResponse = async (
         if (line.startsWith('data: ')) {
           try {
             const data = JSON.parse(line.slice(6));
-            
-            if (data.type === 'token') {
-              hasReceivedData = true;  // ← MARK THAT WE GOT DATA
-              onToken(data.content);
-            }
-            else if (data.type === 'reflex') {
-              hasReceivedData = true;
-              onToken(data.content);
-            }
-            else if (data.type === 'done') {
-              onDone(data.drift_lock);
-            }
-            else if (data.type === 'error') {
-              // Only call onError if no data was received yet
-              if (!hasReceivedData) {
-                onError(data.content);
-              }
-            }
+            if (data.type === 'token') onToken(data.content);
+            else if (data.type === 'done') onDone(data.drift_lock);
+            else if (data.type === 'error') onError(data.content);
+            else if (data.type === 'reflex') onToken(data.content);
           } catch (e) {
-            const text = line.slice(6);
-            if (text) {
-              hasReceivedData = true;
-              onToken(text);
-            }
+            // Not JSON, treat as plain text
+            if (line.length > 6) onToken(line.slice(6));
           }
         }
       }
     }
   } catch (error) {
-    // Only call onError if no data was received
-    if (!hasReceivedData) {
-      onError(error instanceof Error ? error.message : 'Stream error');
-    }
+    onError(error instanceof Error ? error.message : 'Stream error');
   } finally {
     reader.releaseLock();
   }
+};
+
+// ==========================================
+// HELPER: Extract JSON from text
+// ==========================================
+
+const extractJSON = (text: string): any | null => {
+  // Pattern 1: Direct JSON object
+  let match = text.match(/\{[\s\S]*\}/);
+  if (match) {
+    try {
+      return JSON.parse(match[0]);
+    } catch (e) {}
+  }
+  
+  // Pattern 2: After "Portfolio:"
+  match = text.match(/Portfolio:\s*(\{[\s\S]*\})/);
+  if (match) {
+    try {
+      return JSON.parse(match[1]);
+    } catch (e) {}
+  }
+  
+  // Pattern 3: After "📊 Portfolio:"
+  match = text.match(/📊\s*Portfolio:\s*(\{[\s\S]*\})/);
+  if (match) {
+    try {
+      return JSON.parse(match[1]);
+    } catch (e) {}
+  }
+  
+  return null;
 };
 
 // ==========================================
@@ -434,12 +445,13 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
         },
 
         connect: async (apiKey?: string) => {
-          if (apiKey) {
-            set(state => {
-              state.apiKey = apiKey;
-              api.setApiKey(apiKey);
-            });
-          }
+          const defaultKey = "rez-hive-admin-key-2026";
+          const keyToUse = apiKey || defaultKey;
+          
+          set(state => {
+            state.apiKey = keyToUse;
+            api.setApiKey(keyToUse);
+          });
           
           set({ isLoading: true, error: null });
           
@@ -451,10 +463,10 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
               state.telemetry.workers = health.workers;
               state.telemetry.memory = health.memory_entries;
               state.telemetry.gpu = health.gpu || { has_gpu: false };
-              state.role = apiKey ? 'admin' : 'anonymous';
+              state.role = 'admin';
             });
             
-            ws.connect(apiKey);
+            ws.connect(keyToUse);
             
             ws.on('marketUpdate', (data: MarketData[]) => {
               set(state => { state.marketData = data; });
@@ -661,31 +673,29 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
               body: JSON.stringify({ task: '/portfolio' }),
             });
             
-            if (!response.ok) throw new Error('Failed to fetch portfolio');
+            if (!response.ok) throw new Error(`Failed to fetch portfolio: ${response.status}`);
             
             const stream = response.body;
             if (!stream) return;
             
             let fullResponse = '';
+            
             await parseSSEResponse(
               stream,
               (token) => { fullResponse += token; },
-              async () => {
-                const jsonMatch = fullResponse.match(/\{[\s\S]*\}/);
-                if (jsonMatch) {
-                  try {
-                    const portfolioData = JSON.parse(jsonMatch[0]);
-                    set(state => {
-                      state.portfolio = {
-                        balance: portfolioData.balance || state.portfolio.balance,
-                        positions: portfolioData.positions || {},
-                        total_value: portfolioData.total_value || portfolioData.balance,
-                        trades: portfolioData.trades || state.portfolio.trades,
-                      };
-                    });
-                  } catch (e) {
-                    console.error('Failed to parse portfolio:', e);
-                  }
+              () => {
+                const portfolioData = extractJSON(fullResponse);
+                if (portfolioData) {
+                  set(state => {
+                    state.portfolio = {
+                      balance: portfolioData.balance ?? state.portfolio.balance,
+                      positions: portfolioData.positions ?? {},
+                      total_value: portfolioData.total_value ?? portfolioData.balance ?? state.portfolio.total_value,
+                      trades: portfolioData.trades ?? state.portfolio.trades,
+                    };
+                  });
+                } else {
+                  console.warn('No JSON found in portfolio response:', fullResponse);
                 }
               },
               (error) => { console.error('Portfolio fetch error:', error); }
@@ -746,10 +756,10 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
               stream,
               (token) => { fullResponse += token; },
               () => {
-                const match = fullResponse.match(/Backtest: ({.*})/);
-                if (match) {
+                const jsonMatch = fullResponse.match(/\{[\s\S]*\}/);
+                if (jsonMatch) {
                   try {
-                    result = JSON.parse(match[1]);
+                    result = JSON.parse(jsonMatch[0]);
                   } catch (e) {}
                 }
               },
@@ -809,110 +819,83 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
 
         // Chat actions
         sendMessage: async (message: string, model?: string) => {
-  if (!message.trim() || get().isStreaming) return;
-  
-  const userMessage: ChatMessage = {
-    id: `user-${Date.now()}`,
-    role: 'user',
-    content: message,
-    timestamp: Date.now(),
-  };
-  
-  set(state => {
-    state.messages.push(userMessage);
-    state.isStreaming = true;
-    state.currentResponse = '';
-  });
-  
-  const assistantId = `assistant-${Date.now()}`;
-  set(state => {
-    state.messages.push({
-      id: assistantId,
-      role: 'assistant',
-      content: '',
-      timestamp: Date.now(),
-      isStreaming: true,
-    });
-  });
-  
-  try {
-    const stream = await api.chat(message, model);
-    let fullContent = '';
-    let hasReceivedData = false;
-    
-    await parseSSEResponse(
-      stream,
-      (token) => {
-        hasReceivedData = true;
-        fullContent += token;
-        set(state => {
-          const msg = state.messages.find(m => m.id === assistantId);
-          if (msg) msg.content = fullContent;
-          state.currentResponse = fullContent;
-        });
-      },
-      (lock) => {
-        set(state => {
-          const msg = state.messages.find(m => m.id === assistantId);
-          if (msg) {
-            msg.isStreaming = false;
-            msg.drift_lock = lock;
+          if (!message.trim() || get().isStreaming) return;
+          
+          const userMessage: ChatMessage = {
+            id: `user-${Date.now()}`,
+            role: 'user',
+            content: message,
+            timestamp: Date.now(),
+          };
+          
+          set(state => {
+            state.messages.push(userMessage);
+            state.isStreaming = true;
+            state.currentResponse = '';
+          });
+          
+          const assistantId = `assistant-${Date.now()}`;
+          set(state => {
+            state.messages.push({
+              id: assistantId,
+              role: 'assistant',
+              content: '',
+              timestamp: Date.now(),
+              isStreaming: true,
+            });
+          });
+          
+          try {
+            const stream = await api.chat(message, model);
+            let fullContent = '';
+            
+            await parseSSEResponse(
+              stream,
+              (token) => {
+                fullContent += token;
+                set(state => {
+                  const msg = state.messages.find(m => m.id === assistantId);
+                  if (msg) msg.content = fullContent;
+                  state.currentResponse = fullContent;
+                });
+              },
+              (lock) => {
+                set(state => {
+                  const msg = state.messages.find(m => m.id === assistantId);
+                  if (msg) {
+                    msg.isStreaming = false;
+                    msg.drift_lock = lock;
+                  }
+                  state.isStreaming = false;
+                  state.currentResponse = '';
+                });
+              },
+              (error) => {
+                set(state => {
+                  const msg = state.messages.find(m => m.id === assistantId);
+                  if (msg) {
+                    msg.content = `❌ Error: ${error}`;
+                    msg.isStreaming = false;
+                  }
+                  state.isStreaming = false;
+                  state.currentResponse = '';
+                  state.error = error;
+                });
+              }
+            );
+          } catch (error: any) {
+            set(state => {
+              const msg = state.messages.find(m => m.id === assistantId);
+              if (msg) {
+                msg.content = `❌ Connection error: ${error.message}`;
+                msg.isStreaming = false;
+              }
+              state.isStreaming = false;
+              state.currentResponse = '';
+              state.error = error.message;
+            });
           }
-          state.isStreaming = false;
-          state.currentResponse = '';
-        });
-        
-        // Only show error if NO data was received
-        if (!hasReceivedData) {
-          set(state => {
-            const msg = state.messages.find(m => m.id === assistantId);
-            if (msg && !msg.content) {
-              msg.content = `⚠️ No response from kernel. Check if Ollama is running.`;
-              msg.isStreaming = false;
-            }
-            state.isStreaming = false;
-          });
-        }
-      },
-      (error) => {
-        // Only show error if no data was received yet
-        if (!hasReceivedData) {
-          set(state => {
-            const msg = state.messages.find(m => m.id === assistantId);
-            if (msg) {
-              msg.content = `❌ ${error}`;
-              msg.isStreaming = false;
-            }
-            state.isStreaming = false;
-          });
-        } else {
-          // Log silently if we already got data
-          console.debug('Stream warning (ignored):', error);
-        }
-      }
-    );
-  } catch (error: any) {
-    console.error('Send message error:', error);
-    
-    // Only show error if we haven't already shown a response
-    set(state => {
-      const msg = state.messages.find(m => m.id === assistantId);
-      if (msg && !msg.content) {
-        let errorMsg = 'Connection error';
-        if (error.message?.includes('404')) {
-          errorMsg = 'Endpoint not found. Is kernel running?';
-        } else if (error.message?.includes('Failed to fetch')) {
-          errorMsg = 'Cannot connect to kernel at http://127.0.0.1:8002';
-        } else {
-          errorMsg = error.message || 'Unknown error';
-        }
-        msg.content = `❌ ${errorMsg}`;
-        msg.isStreaming = false;
-      }
-      state.isStreaming = false;
-    });
-  }
-},
+        },
 
         clearMessages: () => {
           set({ messages: [], currentResponse: '' });

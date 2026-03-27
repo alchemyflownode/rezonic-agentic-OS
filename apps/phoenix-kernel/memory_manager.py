@@ -1,28 +1,25 @@
-# AUTO-FIXED IMPORT PATH
-import sys
-from pathlib import Path
-_workers_dir = Path(__file__).parent.resolve()
-if str(_workers_dir) not in sys.path:
-    sys.path.insert(0, str(_workers_dir))
-# END AUTO-FIX
-﻿# memory_manager.py
-# Sovereign Memory Manager for PHOENIX v13.3.0
-# Advanced search, indexing, and drift lock management
+﻿"""
+Sovereign Memory Manager v2.0 with Rezhive backend
+Backward compatible with v1 interface
+"""
 
 import json
 import hashlib
 import time
+import logging
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, List, Optional
 from collections import defaultdict
-import logging
+
+from memory.rezhive_storage import RezhiveStorage
 
 logger = logging.getLogger("PHOENIX_MEMORY")
 
 class MemoryEntry:
-    """Sovereign memory entry with cryptographic integrity"""
-    def __init__(self, drift_lock: str, timestamp: float, intent_type: str, 
+    """Memory entry (v1 compatible)"""
+    
+    def __init__(self, drift_lock: str, timestamp: float, intent_type: str,
                  task: str, blueprint: Dict, tags: List[str] = None):
         self.drift_lock = drift_lock
         self.timestamp = timestamp
@@ -47,54 +44,70 @@ class MemoryEntry:
             "age_hours": round(self.age_hours, 1)
         }
 
+
 class SovereignMemoryManager:
-    """Complete sovereign memory manager with drift lock indexing"""
+    """Sovereign Memory Manager with Rezhive backend"""
     
     def __init__(self, memory_dir: Path):
         self.memory_dir = memory_dir
         self.memory_dir.mkdir(parents=True, exist_ok=True)
         
+        # Initialize Rezhive storage
+        self.db_path = memory_dir / "rezhive_memory.db"
+        self.storage = RezhiveStorage(self.db_path)
+        
+        # In-memory indices (for v1 compatibility)
         self.entries: Dict[str, MemoryEntry] = {}
         self.intent_index: Dict[str, List[str]] = defaultdict(list)
         self.tag_index: Dict[str, List[str]] = defaultdict(list)
-        self._load_all()
+        
+        # Load existing memory
+        self._load_from_storage()
         
         logger.info(f"🧠 Sovereign Memory Manager: {len(self.entries)} entries loaded")
     
-    def _load_all(self):
-        """Load all memory entries from disk"""
-        for file_path in self.memory_dir.glob("sce_*.json"):
-            try:
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                
-                drift_lock = data.get("master_drift_lock") or file_path.stem[4:]
-                
-                entry = MemoryEntry(
-                    drift_lock=drift_lock,
-                    timestamp=data.get("timestamp", time.time()),
-                    intent_type=data.get("intent", {}).get("type", "unknown"),
-                    task=data.get("task", "Unknown"),
-                    blueprint=data,
-                    tags=data.get("tags", [])
-                )
-                
-                self.entries[drift_lock] = entry
-                self.intent_index[entry.intent_type].append(drift_lock)
-                for tag in entry.tags:
-                    self.tag_index[tag].append(drift_lock)
-                    
-            except Exception as e:
-                logger.warning(f"Failed to load {file_path.name}: {e}")
+    def _load_from_storage(self):
+        """Load memory from Rezhive storage"""
+        # Get all memory entries
+        cursor = self.storage.conn.execute(
+            "SELECT id, name, category, content, tags, timestamp FROM memory"
+        )
+        
+        for row in cursor:
+            entry = MemoryEntry(
+                drift_lock=row['id'],
+                timestamp=row['timestamp'],
+                intent_type=row['category'],
+                task=row['name'],
+                blueprint=json.loads(row['content']) if row['content'] else {},
+                tags=json.loads(row['tags']) if row['tags'] else []
+            )
+            
+            self.entries[entry.drift_lock] = entry
+            self.intent_index[entry.intent_type].append(entry.drift_lock)
+            for tag in entry.tags:
+                self.tag_index[tag].append(entry.drift_lock)
     
-    def store(self, blueprint: Dict, task: str, intent_type: str = "interaction", 
+    def store(self, blueprint: Dict, task: str, intent_type: str = "interaction",
               tags: List[str] = None) -> str:
         """Store a blueprint as a sovereign memory entry"""
+        
         drift_lock = blueprint.get("master_drift_lock")
         if not drift_lock:
             drift_lock = hashlib.sha256(f"{task}{time.time()}".encode()).hexdigest()[:16]
             blueprint["master_drift_lock"] = drift_lock
         
+        # Store in Rezhive
+        self.storage.store(
+            memory_id=drift_lock,
+            name=task,
+            category=intent_type,
+            content=json.dumps(blueprint, default=str),
+            tags=tags or [],
+            metadata={"source": "phoenix_memory_manager"}
+        )
+        
+        # Update in-memory indices
         entry = MemoryEntry(
             drift_lock=drift_lock,
             timestamp=time.time(),
@@ -109,7 +122,7 @@ class SovereignMemoryManager:
         for tag in entry.tags:
             self.tag_index[tag].append(drift_lock)
         
-        # Persist
+        # Also save JSON file for v1 compatibility
         file_path = self.memory_dir / f"sce_{drift_lock}.json"
         with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(entry.to_dict(), f, indent=2, default=str)
@@ -117,7 +130,7 @@ class SovereignMemoryManager:
         return drift_lock
     
     def search(self, query: str, limit: int = 10, intent_type: str = None) -> List[MemoryEntry]:
-        """Search memory with relevance scoring"""
+        """Search memory (v1 compatible)"""
         query_lower = query.lower()
         scored = []
         
@@ -127,30 +140,22 @@ class SovereignMemoryManager:
             
             score = 0
             
-            # Drift lock match (highest)
             if query_lower == entry.drift_lock.lower():
                 score += 100
             elif query_lower in entry.drift_lock.lower():
                 score += 30
             
-            # Task match
             if query_lower == entry.task.lower():
                 score += 50
             elif query_lower in entry.task.lower():
                 score += 15
             
-            # Intent type match
             if query_lower == entry.intent_type.lower():
                 score += 25
             
-            # Tag match
             for tag in entry.tags:
                 if query_lower in tag.lower():
                     score += 10
-            
-            # Content match
-            if query_lower in json.dumps(entry.blueprint, default=str).lower():
-                score += 5
             
             if score > 0:
                 scored.append((score, entry))
@@ -176,37 +181,56 @@ class SovereignMemoryManager:
         now = time.time()
         ages = [now - e.timestamp for e in self.entries.values()]
         
+        # Get Rezhive stats
+        rezhive_stats = self.storage.get_stats()
+        
         return {
             "total_entries": len(self.entries),
             "by_intent_type": dict(intent_counts),
             "avg_age_hours": sum(ages) / len(ages) / 3600 if ages else 0,
             "newest_age_minutes": min(ages) / 60 if ages else 0,
             "oldest_age_hours": max(ages) / 3600 if ages else 0,
-            "drift_chain_length": len(self.entries)
+            "drift_chain_length": len(self.entries),
+            "db_size_mb": rezhive_stats["db_size_mb"],
+            "audit_entries": rezhive_stats["audit_entries"],
+            "vector_enabled": rezhive_stats["vector_enabled"]
         }
+    
+    def verify_integrity(self) -> bool:
+        """Verify hash chain integrity"""
+        return self.storage.verify_chain()
     
     def delete(self, drift_lock: str) -> bool:
         if drift_lock in self.entries:
-            entry = self.entries[drift_lock]
             del self.entries[drift_lock]
             
-            if entry.intent_type in self.intent_index:
-                self.intent_index[entry.intent_type] = [l for l in self.intent_index[entry.intent_type] if l != drift_lock]
+            # Delete from Rezhive
+            self.storage.conn.execute(
+                "DELETE FROM memory WHERE id = ?", (drift_lock,)
+            )
+            self.storage.conn.commit()
             
-            for tag in entry.tags:
-                if tag in self.tag_index:
-                    self.tag_index[tag] = [l for l in self.tag_index[tag] if l != drift_lock]
-            
+            # Delete JSON file
             file_path = self.memory_dir / f"sce_{drift_lock}.json"
             if file_path.exists():
                 file_path.unlink()
             
             return True
         return False
-
-class MemoryCommandHandler:
-    """Handles all /memory commands"""
     
+    def close(self):
+        """Close storage connection"""
+        self.storage.close()
+    
+    def __enter__(self):
+        return self
+    
+    def __exit__(self, *args):
+        self.close()
+
+
+# Command handler (v1 compatible)
+class MemoryCommandHandler:
     def __init__(self, memory_manager: SovereignMemoryManager):
         self.memory = memory_manager
     
@@ -219,6 +243,8 @@ class MemoryCommandHandler:
             return await self._handle_recent(cmd)
         elif cmd == "/memory stats":
             return await self._handle_stats()
+        elif cmd == "/memory verify":
+            return await self._handle_verify()
         return None
     
     async def _handle_search(self, cmd: str) -> Dict:
@@ -232,7 +258,7 @@ class MemoryCommandHandler:
         if not results:
             return {"type": "reflex", "content": f"📭 No memories found for '{query}'."}
         
-        lines = [f"🔍 **Found {len(results)} memories for '{query}':**\n"]
+        lines = [f"🔍 Found {len(results)} memories for '{query}':\n"]
         for r in results:
             date = datetime.fromtimestamp(r.timestamp).strftime("%Y-%m-%d %H:%M:%S")
             lines.append(f"🔒 `{r.drift_lock[:12]}...` • {r.intent_type} • {date}")
@@ -288,7 +314,10 @@ class MemoryCommandHandler:
             f"🔗 **Drift Chain Length:** {stats['drift_chain_length']}",
             f"⏱️ **Average Age:** {stats['avg_age_hours']:.1f} hours",
             f"🆕 **Newest:** {stats['newest_age_minutes']:.0f} minutes ago",
-            f"📜 **Oldest:** {stats['oldest_age_hours']:.1f} hours ago\n",
+            f"📜 **Oldest:** {stats['oldest_age_hours']:.1f} hours ago",
+            f"💾 **Database Size:** {stats['db_size_mb']:.2f} MB",
+            f"📜 **Audit Log:** {stats['audit_entries']} entries",
+            f"🔍 **Vector Search:** {'✅ Enabled' if stats['vector_enabled'] else '❌ Disabled'}\n",
             "📈 **By Intent Type:**"
         ]
         
@@ -297,3 +326,9 @@ class MemoryCommandHandler:
             lines.append(f"   • {intent:<15}: {bar} {count}")
         
         return {"type": "reflex", "content": "\n".join(lines)}
+    
+    async def _handle_verify(self) -> Dict:
+        if self.memory.verify_integrity():
+            return {"type": "reflex", "content": "✅ **Chain Verified** — All memory entries are cryptographically intact."}
+        else:
+            return {"type": "reflex", "content": "❌ **Chain Verification Failed** — Memory corruption detected!"}

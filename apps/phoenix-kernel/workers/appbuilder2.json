@@ -1,0 +1,105 @@
+{
+  "profile": {
+    "intent": {
+      "name": "Project Name: SQUINT Codename: Color Perception Engine Version: V0.1 (MVP) Category: Visual Intelligence / Artist Training System",
+      "description": "Primary Intent:\nTransform real-world images into simplified perceptual layers\nto train artists in impressionist vision and color decision-making.\n\nCore Function:\nTranslate \"camera reality\" into \"painter perception\"\n\nUser Outcome:\n- Improve ability to see value, temperature, and shape\n- Reduce over-detailing\n- Build intuitive color decisions (especially warm vs cool)\n\nSystem Output:\nGuided visual overlays + structured painting instructions"
+    },
+    "aesthetic": {
+      "palette": [
+        "Primary Colors: - Sovereign Blue: #3b82f6 - Signal Green:   #10b981  Neutral Base: - Deep Canvas:    #0f172a - Soft Slate:     #1e293b - Mist Gray:      #94a3b8 - Pure Light:     #f8fafc"
+      ],
+      "vibe": "Design Philosophy: Clarity over decoration. Focus over stimulation. Silence over noise.  Emotional Tone: - Calm - Precise - Intelligent - Non-distracting  User Feeling: \"I can think clearly here.\""
+    },
+    "constraints": {
+      "timeHours": 40,
+      "skill": "Intermediate",
+      "budget": "Validated",
+      "mustUse": "",
+      "cannotUse": ""
+    }
+  },
+  "augmentation": {
+    "architectureTemplate": "Next.js 14 App Router with Server Actions",
+    "recommendedStack": {
+      "architecture": {
+        "tool": "Next.js Server Components",
+        "reason": "Provides deterministic route handling and secure data injection, minimizing client-side footprint."
+      },
+      "stateManagement": {
+        "tool": "Zustand",
+        "reason": "Lightweight and unopinionated, ideal for maintaining persistent perceptual intent across the application shell."
+      },
+      "styling": {
+        "tool": "Tailwind CSS",
+        "reason": "Utility-first styling ensures strict adherence to the Sovereign palette without CSS abstraction bloat."
+      },
+      "backend": {
+        "tool": "Next.js Server Actions",
+        "reason": "Enables seamless data interface mutations directly from server to client with zero API boilerplate."
+      }
+    },
+    "projectStructure": "SQUINT\n├── app\n│   ├── layout.tsx\n│   ├── page.tsx\n│   └── engine\n│       └── [slug]\n│           └── page.tsx\n├── components\n│   └── SovereignLink.tsx\n├── lib\n│   └── actions.ts\n└── store\n    └── useVibeStore.ts",
+    "files": [
+      {
+        "path": "app/layout.tsx",
+        "content": "import './globals.css';\nimport { Inter } from 'next/font/google';\n\nconst inter = Inter({ subsets: ['latin'] });\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body className={`${inter.className} bg-[#0f172a] text-[#f8fafc]`}>\n        <nav className=\"border-b border-[#1e293b] p-4 flex justify-between items-center\">\n          <div className=\"font-bold text-[#f8fafc] tracking-widest\">SQUINT</div>\n        </nav>\n        <main className=\"min-h-screen flex flex-col\">{children}</main>\n      </body>\n    </html>\n  );\n}",
+        "language": "typescript"
+      },
+      {
+        "path": "store/useVibeStore.ts",
+        "content": "import { create } from 'zustand';\n\ninterface VibeState {\n  activeLayer: 'reality' | 'value' | 'temperature' | 'shape';\n  intensity: number;\n  setLayer: (layer: VibeState['activeLayer']) => void;\n  setIntensity: (intensity: number) => void;\n}\n\nexport const useVibeStore = create<VibeState>((set) => ({\n  activeLayer: 'reality',\n  intensity: 50,\n  setLayer: (layer) => set({ activeLayer: layer }),\n  setIntensity: (intensity) => set({ intensity }),\n}));",
+        "language": "typescript"
+      },
+      {
+        "path": "components/SovereignLink.tsx",
+        "content": "\"use client\";\nimport Link from 'next/link';\nimport { motion } from 'framer-motion';\nimport { ReactNode } from 'react';\n\ninterface SovereignLinkProps {\n  href: string;\n  children: ReactNode;\n}\n\nexport function SovereignLink({ href, children }: SovereignLinkProps) {\n  return (\n    <Link href={href} passHref legacyBehavior>\n      <motion.a\n        whileHover={{ scale: 1.02, color: \"#3b82f6\" }}\n        whileTap={{ scale: 0.98 }}\n        className=\"transition-colors duration-200 text-[#94a3b8] hover:text-[#f8fafc] cursor-pointer\"\n      >\n        {children}\n      </motion.a>\n    </Link>\n  );\n}",
+        "language": "typescript"
+      },
+      {
+        "path": "app/engine/[slug]/page.tsx",
+        "content": "import { getPerceptionData } from '@/lib/actions';\nimport { notFound } from 'next/navigation';\n\ninterface PageProps {\n  params: { slug: string };\n}\n\nexport default async function EnginePage({ params }: PageProps) {\n  const data = await getPerceptionData(params.slug);\n  if (!data) return notFound();\n\n  return (\n    <div className=\"flex flex-col items-center justify-center p-8 space-y-6 flex-1\">\n      <header className=\"text-center space-y-2\">\n        <h1 className=\"text-2xl font-semibold text-[#f8fafc]\">{data.title}</h1>\n        <p className=\"text-[#94a3b8]\">{data.description}</p>\n      </header>\n      <section className=\"w-full max-w-4xl bg-[#1e293b] aspect-video rounded-md flex items-center justify-center border border-[#3b82f6]/20 relative overflow-hidden\">\n        <div className=\"absolute inset-0 flex items-center justify-center text-[#94a3b8]\">\n          [Engine Viewport: {params.slug}]\n        </div>\n      </section>\n    </div>\n  );\n}",
+        "language": "typescript"
+      },
+      {
+        "path": "lib/actions.ts",
+        "content": "\"use server\";\nimport { revalidatePath } from 'next/cache';\n\nexport async function getPerceptionData(slug: string) {\n  const registry: Record<string, { title: string; description: string }> = {\n    'value-study': { title: 'Value Simplification', description: 'Collapse reality into 3 value masses.' },\n    'warm-cool': { title: 'Temperature Mapping', description: 'Isolate warm light from cool shadow.' },\n  };\n  return registry[slug] || null;\n}\n\nexport async function savePerceptionState(slug: string, stateData: any) {\n  await new Promise(resolve => setTimeout(resolve, 500));\n  revalidatePath(`/engine/${slug}`);\n  return { success: true, timestamp: Date.now() };\n}",
+        "language": "typescript"
+      }
+    ],
+    "learningResources": [
+      {
+        "topic": "Next.js Server Actions",
+        "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations",
+        "priority": "High"
+      },
+      {
+        "topic": "Zustand Persistence",
+        "url": "https://docs.pmnd.rs/zustand/integrations/persisting-store-data",
+        "priority": "Medium"
+      },
+      {
+        "topic": "Framer Motion Gestures",
+        "url": "https://www.framer.com/motion/gestures/",
+        "priority": "Low"
+      }
+    ],
+    "teaching": [
+      "Clarity over decoration: Use the Deep Canvas and Soft Slate neutral base to allow the perception engine's visual processing to stand out.",
+      "Deterministic state: The Vibe Store is the single source of truth for the artist's current perception lens (value vs temperature).",
+      "Calm Authority: Interactions should be snappy and decisive. Rely on Server Actions to remove loading spinners where optimistic updates suffice."
+    ],
+    "warnings": [
+      {
+        "type": "Performance",
+        "message": "Heavy image processing via Canvas API on the client thread will cause stuttering.",
+        "suggestion": "Offload reality-to-perception transformations to WebGL shaders or a dedicated Web Worker."
+      },
+      {
+        "type": "Accessibility",
+        "message": "Relying entirely on visual overlays can break screen reader context.",
+        "suggestion": "Ensure aria-labels describe the active perceptual shift (e.g., 'Canvas showing value simplification')."
+      }
+    ]
+  },
+  "generatedAt": "2026-03-27T02:08:03.349Z"
+}

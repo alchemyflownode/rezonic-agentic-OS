@@ -1,6 +1,14 @@
-﻿/** @type {import('next').NextConfig} */
+﻿// next.config.js
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  async rewrites() { return[ { source: '/api/:path*', destination: 'http://localhost:8000/:path*' } ]; }
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://127.0.0.1:8002/:path*',
+      },
+    ];
+  },
 };
+
 module.exports = nextConfig;
