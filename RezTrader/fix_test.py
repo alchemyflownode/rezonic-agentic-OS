@@ -1,0 +1,1 @@
+with open('test_strong_trends.py','r',encoding='utf-8',errors='replace') as f:c=f.read()&c=c.replace("stats['active_signals']","stats.get('active_states',{})")&c='# -*- coding: utf-8 -*-\n'+c if not c.startswith('# -*- coding: utf-8 -*-')else c&open('test_strong_trends.py','w',encoding='utf-8-sig').write(c)&print('? Fixed')

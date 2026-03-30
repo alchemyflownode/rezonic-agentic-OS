@@ -1,42 +1,53 @@
-﻿/** @type {import('tailwindcss').Config} */
-module.exports = {
+﻿// tailwind.config.ts
+import type { Config } from 'tailwindcss';
+
+const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        'bg-deep': '#1a1b26',
-        'bg-surface': '#24283b',
-        'bg-elevated': '#2a2f3f',
-        'accent-cyber': '#7dcfff',
-        'accent-purple': '#bb9af7',
-        'accent-green': '#9ece6a',
-        'accent-orange': '#ff9e64',
-        'accent-red': '#f7768e',
-        'accent-pink': '#ff0077',
-        'text-primary': '#c0caf5',
-        'text-secondary': '#565f89',
-        'border-subtle': '#292e42',
+        phoenix: {
+          bg:      '#0a0a0c',
+          bgSoft:  '#050505',
+          bgGlass: 'rgba(0,0,0,0.3)',
+          primary: '#7dcfff',
+          accent:  '#9B72CB',
+          text:    '#c0caf5',
+          muted:   '#565f89',
+          success: '#9ece6a',
+          error:   '#f7768e',
+          warning: '#e0af68',
+          border:  'rgba(125,207,255,0.1)',
+        },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['JetBrains Mono', 'SF Mono', 'monospace'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       animation: {
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'spin-slow': 'spin 3s linear infinite',
-        'glow': 'glow 2s ease-in-out infinite',
+        'drift-scroll': 'drift-scroll 20s linear infinite',
+        'cursor-blink': 'cursor-blink 1s step-end infinite',
+        'scan-line':    'scan-line 4s linear infinite',
       },
       keyframes: {
-        glow: {
-          '0%, 100%': { textShadow: '0 0 10px rgba(125, 207, 255, 0.3)' },
-          '50%': { textShadow: '0 0 20px rgba(125, 207, 255, 0.6)' },
+        'drift-scroll': {
+          '0%':   { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-50%)' },
+        },
+        'cursor-blink': {
+          '0%, 100%': { opacity: '1' },
+          '50%':      { opacity: '0' },
+        },
+        'scan-line': {
+          '0%':   { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100vh)' },
         },
       },
     },
   },
   plugins: [],
-}
+};
+
+export default config;
