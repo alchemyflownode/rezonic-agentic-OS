@@ -47,3 +47,5 @@ Thumbs.db
 *.log
 chroma.log
 bfg.jar
+
+apps/phoenix-backend/Rez-Acceleration/
