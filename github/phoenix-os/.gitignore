@@ -1,0 +1,44 @@
+﻿# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+
+# Node
+node_modules/
+.next/
+out/
+build/
+dist/
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Runtime
+data/
+logs/
+*.db
+*.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups
+*.backup*
+*.bak
+*.7z
+*~
+
+# Archives
+archive*/
