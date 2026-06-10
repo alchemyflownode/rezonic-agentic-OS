@@ -1,4 +1,4 @@
-// store/phoenixStore.ts
+﻿// store/phoenixStore.ts
 import React from 'react';
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
@@ -234,8 +234,10 @@ class PhoenixWebSocket {
 
   connect(apiKey?: string) {
     if (this.socket?.connected) return;
+    const kernelUrl = 'http://localhost:8002';
+    console.log('🔌 Phoenix WebSocket connecting to:', kernelUrl);
     
-    this.socket = io(this.baseUrl, {
+    
       transports: ['websocket', 'polling'],
       auth: apiKey ? { token: apiKey } : undefined,
       reconnection: true,
@@ -308,6 +310,7 @@ const parseSSEResponse = async (
   const reader = stream.getReader();
   const decoder = new TextDecoder();
   let buffer = '';
+  let hasReceivedData = false;  // â† ADD THIS FLAG
   
   try {
     while (true) {
@@ -322,18 +325,39 @@ const parseSSEResponse = async (
         if (line.startsWith('data: ')) {
           try {
             const data = JSON.parse(line.slice(6));
-            if (data.type === 'token') onToken(data.content);
-            else if (data.type === 'done') onDone(data.drift_lock);
-            else if (data.type === 'error') onError(data.content);
-            else if (data.type === 'reflex') onToken(data.content);
+            
+            if (data.type === 'token') {
+              hasReceivedData = true;  // â† MARK THAT WE GOT DATA
+              onToken(data.content);
+            }
+            else if (data.type === 'reflex') {
+              hasReceivedData = true;
+              onToken(data.content);
+            }
+            else if (data.type === 'done') {
+              onDone(data.drift_lock);
+            }
+            else if (data.type === 'error') {
+              // Only call onError if no data was received yet
+              if (!hasReceivedData) {
+                onError(data.content);
+              }
+            }
           } catch (e) {
-            if (line.length > 6) onToken(line.slice(6));
+            const text = line.slice(6);
+            if (text) {
+              hasReceivedData = true;
+              onToken(text);
+            }
           }
         }
       }
     }
   } catch (error) {
-    onError(error instanceof Error ? error.message : 'Stream error');
+    // Only call onError if no data was received
+    if (!hasReceivedData) {
+      onError(error instanceof Error ? error.message : 'Stream error');
+    }
   } finally {
     reader.releaseLock();
   }
@@ -479,7 +503,7 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
                 state.messages.push({
                   id: `kill-${Date.now()}`,
                   role: 'system',
-                  content: `🔴 KILL SWITCH ACTIVATED by ${data.triggered_by}`,
+                  content: `ðŸ”´ KILL SWITCH ACTIVATED by ${data.triggered_by}`,
                   timestamp: Date.now(),
                 });
               });
@@ -690,7 +714,7 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
                     state.messages.push({
                       id: `trade-${Date.now()}`,
                       role: 'system',
-                      content: `✅ Trade executed: ${action.toUpperCase()} ${amount} ${symbol}`,
+                      content: `âœ… Trade executed: ${action.toUpperCase()} ${amount} ${symbol}`,
                       timestamp: Date.now(),
                     });
                   });
@@ -701,7 +725,7 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
                   state.messages.push({
                     id: `trade-error-${Date.now()}`,
                     role: 'error',
-                    content: `❌ Trade failed: ${error}`,
+                    content: `âŒ Trade failed: ${error}`,
                     timestamp: Date.now(),
                   });
                 });
@@ -787,83 +811,110 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
 
         // Chat actions
         sendMessage: async (message: string, model?: string) => {
-          if (!message.trim() || get().isStreaming) return;
-          
-          const userMessage: ChatMessage = {
-            id: `user-${Date.now()}`,
-            role: 'user',
-            content: message,
-            timestamp: Date.now(),
-          };
-          
-          set(state => {
-            state.messages.push(userMessage);
-            state.isStreaming = true;
-            state.currentResponse = '';
-          });
-          
-          const assistantId = `assistant-${Date.now()}`;
-          set(state => {
-            state.messages.push({
-              id: assistantId,
-              role: 'assistant',
-              content: '',
-              timestamp: Date.now(),
-              isStreaming: true,
-            });
-          });
-          
-          try {
-            const stream = await api.chat(message, model);
-            let fullContent = '';
-            
-            await parseSSEResponse(
-              stream,
-              (token) => {
-                fullContent += token;
-                set(state => {
-                  const msg = state.messages.find(m => m.id === assistantId);
-                  if (msg) msg.content = fullContent;
-                  state.currentResponse = fullContent;
-                });
-              },
-              (lock) => {
-                set(state => {
-                  const msg = state.messages.find(m => m.id === assistantId);
-                  if (msg) {
-                    msg.isStreaming = false;
-                    msg.drift_lock = lock;
-                  }
-                  state.isStreaming = false;
-                  state.currentResponse = '';
-                });
-              },
-              (error) => {
-                set(state => {
-                  const msg = state.messages.find(m => m.id === assistantId);
-                  if (msg) {
-                    msg.content = `❌ Error: ${error}`;
-                    msg.isStreaming = false;
-                  }
-                  state.isStreaming = false;
-                  state.currentResponse = '';
-                  state.error = error;
-                });
-              }
-            );
-          } catch (error: any) {
-            set(state => {
-              const msg = state.messages.find(m => m.id === assistantId);
-              if (msg) {
-                msg.content = `❌ Connection error: ${error.message}`;
-                msg.isStreaming = false;
-              }
-              state.isStreaming = false;
-              state.currentResponse = '';
-              state.error = error.message;
-            });
+  if (!message.trim() || get().isStreaming) return;
+  
+  const userMessage: ChatMessage = {
+    id: `user-${Date.now()}`,
+    role: 'user',
+    content: message,
+    timestamp: Date.now(),
+  };
+  
+  set(state => {
+    state.messages.push(userMessage);
+    state.isStreaming = true;
+    state.currentResponse = '';
+  });
+  
+  const assistantId = `assistant-${Date.now()}`;
+  set(state => {
+    state.messages.push({
+      id: assistantId,
+      role: 'assistant',
+      content: '',
+      timestamp: Date.now(),
+      isStreaming: true,
+    });
+  });
+  
+  try {
+    const stream = await api.chat(message, model);
+    let fullContent = '';
+    let hasReceivedData = false;
+    
+    await parseSSEResponse(
+      stream,
+      (token) => {
+        hasReceivedData = true;
+        fullContent += token;
+        set(state => {
+          const msg = state.messages.find(m => m.id === assistantId);
+          if (msg) msg.content = fullContent;
+          state.currentResponse = fullContent;
+        });
+      },
+      (lock) => {
+        set(state => {
+          const msg = state.messages.find(m => m.id === assistantId);
+          if (msg) {
+            msg.isStreaming = false;
+            msg.drift_lock = lock;
           }
-        },
+          state.isStreaming = false;
+          state.currentResponse = '';
+        });
+        
+        // Only show error if NO data was received
+        if (!hasReceivedData) {
+          set(state => {
+            const msg = state.messages.find(m => m.id === assistantId);
+            if (msg && !msg.content) {
+              msg.content = `âš ï¸ No response from kernel. Check if Ollama is running.`;
+              msg.isStreaming = false;
+            }
+            state.isStreaming = false;
+          });
+        }
+      },
+      (error) => {
+        // Only show error if no data was received yet
+        if (!hasReceivedData) {
+          set(state => {
+            const msg = state.messages.find(m => m.id === assistantId);
+            if (msg) {
+              msg.content = `âŒ ${error}`;
+              msg.isStreaming = false;
+            }
+            state.isStreaming = false;
+          });
+        } else {
+          // Log silently if we already got data
+          console.debug('Stream warning (ignored):', error);
+        }
+      }
+    );
+  } catch (error: any) {
+    console.error('Send message error:', error);
+    
+    // Only show error if we haven't already shown a response
+    set(state => {
+      const msg = state.messages.find(m => m.id === assistantId);
+      if (msg && !msg.content) {
+        let errorMsg = 'Connection error';
+        if (error.message?.includes('404')) {
+          errorMsg = 'Endpoint not found. Is kernel running?';
+        } else if (error.message?.includes('Failed to fetch')) {
+          errorMsg = 'Cannot connect to kernel at http://127.0.0.1:8002';
+        } else {
+          errorMsg = error.message || 'Unknown error';
+        }
+        msg.content = `âŒ ${errorMsg}`;
+        msg.isStreaming = false;
+      }
+      state.isStreaming = false;
+    });
+  }
+},
 
         clearMessages: () => {
           set({ messages: [], currentResponse: '' });
@@ -894,7 +945,7 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
             state.messages.push({
               id: `gen-${Date.now()}`,
               role: 'user',
-              content: `🎨 Generating image: ${prompt}`,
+              content: `ðŸŽ¨ Generating image: ${prompt}`,
               timestamp: Date.now(),
             });
           });
@@ -939,7 +990,7 @@ export const usePhoenixStore = create<PhoenixState & PhoenixActions>()(
             state.messages.push({
               id: `vid-${Date.now()}`,
               role: 'user',
-              content: `🎬 Generating video: ${prompt}`,
+              content: `ðŸŽ¬ Generating video: ${prompt}`,
               timestamp: Date.now(),
             });
           });
@@ -1038,3 +1089,14 @@ export const useAutoRefresh = (interval: number = 5000) => {
     return () => clearInterval(timer);
   }, [connected, interval, fetchWorkers, fetchTelemetry, fetchChainStats, fetchKillSwitchStatus, fetchPortfolio]);
 };
+// Auto-connect on store initialization
+if (typeof window !== 'undefined') {
+  // Auto-connect after a short delay to ensure everything is ready
+  setTimeout(() => {
+    const store = usePhoenixStore.getState();
+    if (!store.connected) {
+      console.log('🔄 Auto-connecting to Phoenix Kernel...');
+      store.connect();
+    }
+  }, 1000);
+}

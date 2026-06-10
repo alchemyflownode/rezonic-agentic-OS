@@ -9,6 +9,21 @@
 
 ![Phoenix OS Dashboard](screenshots/dashboard.png)
 
+![Phoenix OS Banner](https://via.placeholder.com/1200x400?text=Phoenix+OS)
+
+## 🚀 Live Demo
+[Coming soon! Deploying to Vercel/Railway]
+
+## 📸 Screenshots
+![Dashboard](screenshots/dashboard.png)
+![Trading Interface](screenshots/trading.png)
+![System Monitor](screenshots/system-monitor.png)
+
+## 🏆 GitHub Stats
+![Stars](https://img.shields.io/github/stars/alchemyflownode/rezonic-agentic-OS)
+![Forks](https://img.shields.io/github/forks/alchemyflownode/rezonic-agentic-OS)
+![Issues](https://img.shields.io/github/issues/alchemyflownode/rezonic-agentic-OS)
+
 ## ✨ Features
 
 ### 🧠 Constitutional AI

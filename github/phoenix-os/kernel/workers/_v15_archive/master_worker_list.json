@@ -1,0 +1,227 @@
+[
+  {
+    "file": "agamoto_bridge_worker.py",
+    "class": "AgamotoBridgeWorker",
+    "worker_name": "agamotobridge"
+  },
+  {
+    "file": "apex_worker.py",
+    "class": "ApexWorker",
+    "worker_name": "apex"
+  },
+  {
+    "file": "app_builder_worker.py",
+    "class": "AppBuilderWorker",
+    "worker_name": "appbuilder"
+  },
+  {
+    "file": "audio_worker.py",
+    "class": "AudioWorker",
+    "worker_name": "audio"
+  },
+  {
+    "file": "backtest_engine.py",
+    "class": "BacktestEngine",
+    "worker_name": "backtestengine"
+  },
+  {
+    "file": "backtest_worker.py",
+    "class": "BacktestWorker",
+    "worker_name": "backtest"
+  },
+  {
+    "file": "backup_base_worker.py",
+    "class": "BaseWorker",
+    "worker_name": "base"
+  },
+  {
+    "file": "backup_worker.py",
+    "class": "BackupWorker",
+    "worker_name": "backup"
+  },
+  {
+    "file": "base_worker.py",
+    "class": "Worker",
+    "worker_name": ""
+  },
+  {
+    "file": "browser_worker.py",
+    "class": "BrowserWorker",
+    "worker_name": "browser"
+  },
+  {
+    "file": "canvas_worker.py",
+    "class": "CanvasWorker",
+    "worker_name": "canvas"
+  },
+  {
+    "file": "circuit_breaker_worker.py",
+    "class": "CircuitBreakerWorker",
+    "worker_name": "circuitbreaker"
+  },
+  {
+    "file": "clipboard_worker.py",
+    "class": "ClipboardWorker",
+    "worker_name": "clipboard"
+  },
+  {
+    "file": "comfyui_worker.py",
+    "class": "ComfyUIWorker",
+    "worker_name": "comfyui"
+  },
+  {
+    "file": "constitutional_evaluator.py",
+    "class": "ConstitutionalEvaluator",
+    "worker_name": "constitutionalevaluator"
+  },
+  {
+    "file": "constitutional_worker.py",
+    "class": "ConstitutionalWorker",
+    "worker_name": "constitutional"
+  },
+  {
+    "file": "context_bus.py",
+    "class": "ContextBus",
+    "worker_name": "contextbus"
+  },
+  {
+    "file": "cortex_worker.py",
+    "class": "CortexWorker",
+    "worker_name": "cortex"
+  },
+  {
+    "file": "coworker_registry.py",
+    "class": "CoworkerRegistry",
+    "worker_name": "coworkerregistry"
+  },
+  {
+    "file": "exchange_worker.py",
+    "class": "ExchangeWorker",
+    "worker_name": "exchange"
+  },
+  {
+    "file": "filesystem_context.py",
+    "class": "FilesystemContext",
+    "worker_name": "filesystemcontext"
+  },
+  {
+    "file": "file_manager_worker.py",
+    "class": "FileManagerWorker",
+    "worker_name": "filemanager"
+  },
+  {
+    "file": "hands_worker.py",
+    "class": "HandsWorker",
+    "worker_name": "hands"
+  },
+  {
+    "file": "harvester_worker.py",
+    "class": "HarvesterWorker",
+    "worker_name": "harvester"
+  },
+  {
+    "file": "jurisdiction_scanner.py",
+    "class": "JurisdictionScanner",
+    "worker_name": "jurisdictionscanner"
+  },
+  {
+    "file": "memory_worker.py",
+    "class": "MemoryWorker",
+    "worker_name": "memory"
+  },
+  {
+    "file": "paper_trader_worker.py",
+    "class": "PaperTraderWorker",
+    "worker_name": "papertrader"
+  },
+  {
+    "file": "pc_hive_memory.py",
+    "class": "PcHiveMemory",
+    "worker_name": "pchivememory"
+  },
+  {
+    "file": "ps1_router.py",
+    "class": "Ps1Router",
+    "worker_name": "ps1router"
+  },
+  {
+    "file": "register_workers.py",
+    "class": "RegisterWorkers",
+    "worker_name": "registers"
+  },
+  {
+    "file": "registry_orchestrator.py",
+    "class": "RegistryOrchestrator",
+    "worker_name": "registryorchestrator"
+  },
+  {
+    "file": "rezstack_worker.py",
+    "class": "RezstackWorker",
+    "worker_name": "rezstack"
+  },
+  {
+    "file": "rez_scanner.py",
+    "class": "RezScanner",
+    "worker_name": "rezscanner"
+  },
+  {
+    "file": "rez_swarm_worker.py",
+    "class": "RezSwarmWorker",
+    "worker_name": "rezswarm"
+  },
+  {
+    "file": "sandbox_worker.py",
+    "class": "SandboxWorker",
+    "worker_name": "sandbox"
+  },
+  {
+    "file": "sce_image_worker.py",
+    "class": "SCEImageWorker",
+    "worker_name": "sceimage"
+  },
+  {
+    "file": "simple_test_worker.py",
+    "class": "SimpleTestWorker",
+    "worker_name": "simpletest"
+  },
+  {
+    "file": "sovereign_mcp_server.py",
+    "class": "SovereignMcpServer",
+    "worker_name": "sovereignmcpserver"
+  },
+  {
+    "file": "strategy_evolver.py",
+    "class": "StrategyEvolver",
+    "worker_name": "strategyevolver"
+  },
+  {
+    "file": "system_worker.py",
+    "class": "SystemWorker",
+    "worker_name": "system"
+  },
+  {
+    "file": "techdebt_scanner.py",
+    "class": "TechdebtScanner",
+    "worker_name": "techdebtscanner"
+  },
+  {
+    "file": "trade_visualizer.py",
+    "class": "WorkerActivity",
+    "worker_name": "activity"
+  },
+  {
+    "file": "trade_visualizer.py",
+    "class": "TradeVisualizerWorker",
+    "worker_name": "tradevisualizer"
+  },
+  {
+    "file": "validator_worker.py",
+    "class": "ValidatorWorker",
+    "worker_name": "validator"
+  },
+  {
+    "file": "vision_worker.py",
+    "class": "VisionWorker",
+    "worker_name": "vision"
+  }
+]

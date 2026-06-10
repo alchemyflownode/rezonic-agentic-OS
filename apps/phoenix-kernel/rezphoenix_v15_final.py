@@ -1192,30 +1192,30 @@ class PhoenixKernel:
             self._setup_socketio()
     
     def _setup_socketio(self):
-        @self.sio.on("connect")
-        async def on_connect(sid, _):
-            logger.info(f"🟢 Socket connected: {sid[:8]}")
-            await self.sio.emit('agentLog', {
-                "timestamp": datetime.now().isoformat(),
-                "message": f"Secure Link: {sid[:8]}",
-                "type": "SYSTEM"
-            }, room=sid)
-        
-        @self.sio.on("disconnect")
-        async def on_disconnect(sid):
-            logger.info(f"🔴 Socket disconnected: {sid[:8]}")
-        
-        @self.sio.on('execute_trade')
-        async def handle_trade(sid, data):
-            await event_bus.publish(Event(
-                type=EventType.TRADE_EXECUTED,
-                source="trade_executor",
-                payload={"action": "trade", "data": data}
-            ))
-            await self.sio.emit('trade_result', {
-                "status": "AUTHORIZED",
-                "certificate": f"0x{hashlib.sha256(str(time.time()).encode()).hexdigest()[:16]}"
-            }, room=sid)
+    @self.sio.on("connect")
+    async def on_connect(sid, environ):  # ← FIX: added environ parameter
+        logger.info(f"🟢 Socket connected: {sid[:8]}")
+        await self.sio.emit('agentLog', {
+            "timestamp": datetime.now().isoformat(),
+            "message": f"Secure Link: {sid[:8]}",
+            "type": "SYSTEM"
+        }, room=sid)
+    
+    @self.sio.on("disconnect")
+    async def on_disconnect(sid):
+        logger.info(f"🔴 Socket disconnected: {sid[:8]}")
+    
+    @self.sio.on('execute_trade')
+    async def handle_trade(sid, data):
+        await event_bus.publish(Event(
+            type=EventType.TRADE_EXECUTED,
+            source="trade_executor",
+            payload={"action": "trade", "data": data}
+        ))
+        await self.sio.emit('trade_result', {
+            "status": "AUTHORIZED",
+            "certificate": f"0x{hashlib.sha256(str(time.time()).encode()).hexdigest()[:16]}"
+        }, room=sid)
     
     def _setup_routes(self):
         @self.app.get("/")
